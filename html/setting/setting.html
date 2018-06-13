@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui.2.0.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/clubtheme.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: auto;
+            background: rgb(4, 2, 14);
+            font-weight: 200;
+            overflow: hidden;
+            padding-bottom: 0px;
+        }
+
+        #app {
+            width: 100%;
+        }
+
+        .aui-list{
+            background: none;
+            padding: 0 24px 0 30px;
+        }
+        .aui-list>li{
+            height: 66px;
+            background-image: none!important;
+            line-height: 48px;
+            padding-left: 0!important;
+        }
+        .aui-list>li::after{
+            height: 1px;
+            width: 100%;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left:0;
+            background: rgb(27,25,38);
+        }
+        .aui-list>li:active,.aui-media-list-item-inner:active{
+            background: none!important;
+        }
+        .aui-list>li .aui-list-item-media img{
+            width: 26px;
+            height: 26px;
+        }
+        .aui-list .aui-list-item-title{
+            font-family: Exo2-SemiBold;
+            font-size: 14px;
+            color: #FFFFFF;
+        }
+        .aui-list .aui-list-item-media{
+            width: auto!important;
+            margin-right: 20px!important;
+            padding-right: 0!important;
+        }
+        p{
+            font-family: Exo2-Bold;
+            font-size: 12px;
+            color: #B2B2BE;
+            letter-spacing: 2px;
+            padding: 36px 0;
+            position: relative;
+            display: block;
+        }
+        p::after{
+            height: 1px;
+            width: 100%;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left:0;
+            background: rgb(27,25,38);
+        }
+        .logout{
+            font-family: Exo2-Bold;
+            font-size: 12px;
+            color: #FF6960;
+            letter-spacing: 2px;
+            margin: 68px auto 30px auto;
+            text-align: center;
+        }
+        .aui-list-item-arrow:before{
+            border-color:rgb(51,53,66);
+        }
+        .aui-list-item-right{
+            font-family: Exo2-Medium;
+            font-size: 14px;
+            color: #5D5C71;
+            line-height: 20px;
+        }
+        .aui-switch{
+            width: 61px;
+            height: 35px;
+            border-radius: 30px;
+        }
+        .aui-switch:before {
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: 4px;
+            left: 5px;
+            border-radius: 0.6rem;
+            background-color: #fff;
+            content: '';
+            -webkit-transition: left 0.2s;
+            transition: left 0.2s;
+        }
+        .aui-switch:checked:before{
+            left: 30px;
+        }
+        .mask::before{
+            content: '';
+            width: 100%;
+            position: absolute;
+            top:0;
+            left: 0;
+            height: 100%;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <ul class="aui-list aui-media-list">
+            <li class="aui-list-item aui-list-item-middle" @click="openwin('addressbook')">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media" style="width: 3rem;">
+                        <img src="../../image/setting/Group@3x.png" class="aui-img-round">
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title aui-font-size-14">Address Book</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item aui-list-item-middle">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media" style="width: 3rem;">
+                        <img src="../../image/setting/Notifications@3x.png" class="aui-img-round">
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title aui-font-size-14">Notifications</div>
+                            <div class="aui-list-item-right">
+                                <input type="checkbox" class="aui-switch" checked="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item aui-list-item-middle">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media" style="width: 3rem;">
+                        <img src="../../image/setting/finger@3x.png" class="aui-img-round">
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title aui-font-size-14">Touch ID</div>
+                            <div class="aui-list-item-right" @click="touchchkfun" style="position: relative;z-index:2;">
+                                <input type="checkbox" class="aui-switch" :checked="touchchk?true:false" style="    position: relative;z-index:1;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item aui-list-item-middle" @click="openwin('Pattern')">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media" style="width: 3rem;">
+                        <img src="../../image/setting/Gesture@3x.png" class="aui-img-round">
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title aui-font-size-14">Pattern</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item aui-list-item-middle" @click="openwin('password')">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media" style="width: 3rem;">
+                        <img src="../../image/setting/Lock@3x.png" class="aui-img-round">
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title aui-font-size-14">Password</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <p>Language & Version</p>
+            <li class="aui-list-item aui-list-item-middle" @click="openwin('Language')">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media" style="width: 3rem;">
+                        <img src="../../image/setting/ChatBubble@3x.png" class="aui-img-round">
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title aui-font-size-14">Language</div>
+                            <div class="aui-list-item-right">English</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item aui-list-item-middle" @click="openwin('sendbook')">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media" style="width: 3rem;">
+                        <img src="../../image/setting/Message@3x.png" class="aui-img-round">
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title aui-font-size-14">Send Feedback</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item aui-list-item-middle">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media" style="width: 3rem;">
+                        <img src="../../image/setting/Helphelp@3x.png" class="aui-img-round">
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title aui-font-size-14">Help</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item aui-list-item-middle">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media" style="width: 3rem;">
+                        <img src="../../image/setting/Info@3x.png" class="aui-img-round">
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title aui-font-size-14">App Version</div>
+                            <div class="aui-list-item-right">1.2.5 (12)</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="logout" @click="openwin('login')">log out</div>
+    </div>
+    <script type="text/javascript" src="../../script/config.js"></script>
+    <script type="text/javascript" src="../../script/newapp.js"></script>
+    <script type="text/javascript" src="../../script/vue.js"></script>
+    <script type="text/javascript">
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                touchchk:false,
+            },
+            methods: {
+                init:function () {
+                    var istouchid = h.gdata("istouchid");
+                    this.touchchk = istouchid.setting;
+                },
+                touchchkfun:function(){
+                    var that = this;
+                    var touchID = api.require('touchID');
+                    touchID.isValid(function(ret) {
+                        if (ret.status) {
+                            that.touchchk = !that.touchchk;
+                            h.sdata("istouchid",{setting:that.touchchk});
+                        } else {
+                            api.toast({
+                                msg: 'Equipment does not support fingerprint identification',
+                                duration: 2000,
+                                location: 'bottom'
+                            });
+                        }
+                    });
+                },
+                openwin:function(type,val) {
+                    var that = this;
+                    switch (type) {
+                        case 'Pattern':
+                            var matrixLock = api.require('matrixLock');
+                            matrixLock.checkGesture(function(ret, err) {
+                                if (ret) {
+                                    if(ret.code == 0){
+                                        h.openwin('pattern_win','/html/setting',{});
+                                    } else if(ret.code == 1){
+                                        h.openwin('verify_win','/html/setting',{});
+                                    }
+                                }
+                            });
+                            break;
+                        case 'addressbook':
+                            h.openwin('addressbook_win','/html/setting',{});
+                            break;
+                        case 'password':
+                            h.openwin('password_win','/html/setting',{});
+                            break;
+                        case 'Language':
+                            h.openwin('language_win','/html/setting',{});
+                            break;
+                        case 'sendbook':
+                            h.openwin('sendbook_win','/html/setting',{});
+                             break;
+                        case 'login':
+                            h.openwin('login_win','/html/login',{});
+                            break;
+                    }
+                },
+            },
+        });
+
+        h.ready();
+    </script>
+</body>
+
+</html>

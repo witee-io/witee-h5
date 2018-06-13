@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui.2.0.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: auto;
+            overflow: hidden;
+            font-weight: 200;
+            background: rgb(4, 2, 14);
+            padding-bottom: 30px;
+        }
+
+        #app {
+            width: 100%;
+            text-align: center;
+        }
+
+        .head{
+            width: 300px;
+            height: auto;
+            text-align: center;
+            margin: 47px auto 37px auto;
+        }
+        .head .user{
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            margin-bottom: 25px;
+            margin: 0 auto 25px auto;
+        }
+        .head .money{
+            font-family: Exo2-Medium;
+            font-size: 32px;
+            color: #34A9FF;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+            margin-bottom: 10px;
+        }
+        .head .money span{
+            font-family: Exo2-Medium;
+            font-size: 12px;
+            color: #34A9FF;
+            line-height: 0;
+            position: relative;
+            top: -12px;
+        }
+        .head .t{
+            font-family: Exo2-Medium;
+            font-size: 12px;
+            color: #5D5C71;
+        }
+        .center{
+            width: 300px;
+            margin: 0 auto;
+            display: flex;
+            padding: 0 17px;
+        }
+        .center>div{
+            width: 50%;
+        }
+        .center p{
+            font-family: Exo2-Medium;
+            font-size: 14px;
+            color: #FFFFFF;
+            line-height: 20px;
+        }
+        .center p.t{
+            font-family: Exo2-Medium;
+            font-size: 12px;
+            color: #5D5C71;
+            line-height: 10px;
+            margin-left: -28px;
+        }
+        .line{
+            width: 300px;
+            text-align: center;
+            margin: 24px auto 0 auto;
+            position: relative;
+        }
+        .line::before{
+            content: ' ';
+            background: url('../image/Img/s_line@3x.png');
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            height: 2px;
+            background-size: 100%;
+            left: 0;
+        }
+        .line li {
+            display: flex;
+            height: 62px;
+            font-family: Exo2-Bold;
+            font-size: 12px;
+            color: #FFFFFF;
+            letter-spacing: 2px;
+            line-height: 62px;
+            position: relative;
+        }
+        .line li:after{
+            content: ' ';
+            background: url('../image/Img/s_line@3x.png');
+            width: 100%;
+            position: absolute;
+            bottom: 0px;
+            height: 2px;
+            background-size: 100%;
+            left: 0;
+        }
+        .line li span{
+            display: flex;
+            width: 141px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .line li img{
+            width: 26px;
+            height: 26px;
+            margin-right: 19px;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="head">
+            <img src="../image/demo1.png" class="user">
+            <div class="money">
+                <span>$</span>19,451,136.30
+            </div>
+            <div class="t">Balance</div>
+        </div>
+        <div class="center">
+            <div class="l">
+                <p>9,973.91</p>
+                <p class="t">ETH</p>
+            </div>
+            <div class="r">
+                <p>34,567.89</p>
+                <p class="t">WEE</p>
+            </div>
+        </div>
+        <ul class="line">
+            <li @click="openwin('mybalance')">
+                <span><img src="../image/Witee@3x.png">My Balance</span>
+            </li>
+            <li  @click="openwin('myaddress')">
+                <span><img src="../image/QR@3x.png">My address</span>
+            </li>
+            <li  @click="openwin('Transactions')">
+                <span><img src="../image/Buyback@3x.png">Transactions</span>
+            </li>
+            <li @click="openwin('code')">
+                <span><img src="../image/Scan@3x.png">Scan QR Code</span>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="../script/config.js"></script>
+    <script type="text/javascript" src="../script/newapp.js"></script>
+    <script type="text/javascript" src="../script/vue.js"></script>
+    <script type="text/javascript">
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+            },
+            methods: {
+                init:function () {
+
+                },
+                openwin:function(type,val) {
+                    var that = this;
+                    switch (type) {
+                        case 'mybalance':
+                            h.openwin('mybalance_win','/html/user',{});
+                            break;
+                        case 'code':
+                            var FNScanner = api.require('FNScanner');
+                            FNScanner.openScanner({
+                                autorotation: true
+                            }, function(ret, err) {
+
+                            });
+                            break;
+                        case 'myaddress':
+                            h.openwin('myaddress_win','/html/user',{});
+                            break;
+                        case 'Transactions':
+                            h.openwin('transactions_win','/html/user',{});
+                            break;
+                    }
+                }
+            },
+        });
+
+        h.ready();
+    </script>
+</body>
+
+</html>

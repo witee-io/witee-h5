@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui.2.0.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            background: rgb(4, 2, 14);
+            font-weight: 200;
+
+        }
+
+        #app {
+            width: 100%;
+            padding: 0 33px;
+            padding-top: 1.5rem;
+            height: auto;
+            overflow: hidden;
+            padding-bottom: 1rem;
+        }
+
+        .top {
+            width: 100%;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .name {
+            color: #5D5C71;
+            text-transform: Uppercase;
+            letter-spacing: 2px;
+            font-size: 0.6rem;
+        }
+
+        .right {
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-transform: Uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+            font-size: 0.6rem;
+        }
+
+        .right input {
+            margin: 0 0.5rem;
+        }
+
+        .aui-switch {
+            width: 3rem;
+            height: 1.5rem;
+            border-radius: 5rem;
+            border-color: transparent;
+            background-color: #1E1C2A;
+        }
+
+        .aui-switch:before {
+            width: 1.3rem;
+            height: 1.3rem;
+            border-radius: 50%;
+            top: 0.05rem;
+        }
+
+        .c {
+            text-transform: Uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            font-size: 0.6rem;
+        }
+
+        .aui-list,.aui-list .aui-list-item {
+            background-image: none;
+        }
+
+        .aui-card-list,.aui-list {
+            background: transparent;
+        }
+
+        .aui-list-item-arrow:before {
+            border-color: #5D5C71;
+        }
+
+        .aui-media-list-item-inner {
+            border-bottom: 1px solid #1E1C2A;
+        }
+
+        .aui-list .aui-list-item-right {
+            text-transform: Uppercase;
+            letter-spacing: 2px;
+            font-size: 0.6rem;
+        }
+
+        .aui-list .aui-list-item-title {
+            color:#FFFFFF;
+            font-weight: 400;
+        }
+
+        .aui-list .aui-list-item-media {
+            padding: 1rem 0;
+            padding-right: 0.75rem;
+        }
+
+        .aui-list .aui-list-item {
+            padding-left: 1rem;
+        }
+        .aui-switch:checked:before {
+            left: 1.6rem;
+        }
+        .tops{
+			display: flex;
+			height: 25px;
+			width: 100%;
+			margin-bottom: 30px;
+		}
+		.tops .l{
+			font-family: Exo2-Bold;
+			font-size: 12px;
+			color: #34A9FF;
+			letter-spacing: 2px;
+			width: 70px;
+			line-height: 25px;
+		}
+		.tops .r{
+			font-family: Exo2-Bold;
+			font-size: 12px;
+			color: #5D5C71;
+			letter-spacing: 2px;
+			width: 60px;
+			line-height: 25px;
+			margin-left: 5px;
+		}
+		.tops .c{
+			width: calc( 100% - 130px);
+			height: 12.5px;
+			border-bottom: 1px solid #353343;
+			margin: 0 17px;
+			position: relative;
+		}
+		.tops .c:before{
+			content: '';
+			width: 25px;
+			height: 25px;
+			position: absolute;
+			left: -12.5px;
+			border: 1px solid #34A9FF;
+			border-radius: 50%;
+			transition: all 0.3s ease-in;
+		}
+		.tops .c:after{
+			content: '';
+			width: 5px;
+			height: 5px;
+			position: absolute;
+			background: #34A9FF;
+			border-radius: 50%;
+			top: 10px;
+			left: -0.5px;
+			transition: all 0.3s ease-in;
+		}
+		.tops.r .l{
+			color:#5D5C71;
+		}
+		.tops.r .r{
+			color:#34A9FF;
+		}
+
+		.tops.r .c::before{
+			margin-left: 100%;
+		}
+		.tops.r .c::after{
+			margin-left: 100%;
+		}
+        .aui-list .aui-list-item{
+            padding-left: 0;
+        }
+        .topNav {
+            width: 100%;
+            overflow-x: scroll;
+
+        }
+        .topNavs{
+            overflow: hidden;
+            margin-top: 0px
+        }
+
+        .aui-tab {
+            display: flex;
+            width: max-content;
+            background: transparent;
+            width: 100%;
+            padding-right: 0;
+        }
+
+        .aui-tab-item {
+            width: 5.5rem;
+            display: inline-block;
+            color: #5D5C71;
+            position: relative;
+            text-transform: Uppercase;
+            letter-spacing: 2px;
+        }
+        .topNavs .aui-tab-item{
+            width: 33.33%;
+        }
+        .topNavs{
+            position: relative;
+            z-index: 99;
+        }
+
+        .aui-tab-item.aui-active {
+            color: white;
+            border: none;
+        }
+
+        .aui-tab-item.aui-active::after {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #34A9FF;
+            margin-left: -3px;
+        }
+
+
+        .aui-card-list,.aui-list,.aui-grid {
+            background: transparent;
+        }
+
+        .aui-list .aui-list-item {
+            background-image: none;
+        }
+
+        .aui-list .aui-list-item-title {
+            font-size: inherit;
+        }
+
+        .aui-list .aui-list-item-inner {
+            padding-right: 0;
+        }
+
+        .aui-list .aui-list-item {
+            padding-left: 0;
+        }
+
+        .aui-card-list {
+            margin-bottom: 0;
+            padding: 0 0.5rem;
+        }
+        .linebox{
+            margin-top: 30px;
+            width: 100%;
+
+        }
+        .linebox .line{
+            width: 100%;
+            height: 105px;
+            border-bottom: 1px solid rgb(30,28,54);
+        }
+        .linebox .line .l{
+            float: left;
+            width: 33.33%;
+        }
+        .linebox .line .l .t{
+            font-family: Exo2-Bold;
+            font-size: 12px;
+            color: #34A9FF;
+            letter-spacing: 2px;
+            margin-top: 20px
+        }
+        .linebox .line .l .c{
+            font-family: Exo2-Medium;
+            font-size: 17px;
+            color: #FFFFFF;
+            margin-top: 6px;
+        }
+        .linebox .line .l .b{
+            font-family: Exo2-Medium;
+            font-size: 13px;
+            color: #5D5C71;
+            margin-top: 8px;
+        }
+        .linebox .line .ce{
+            float: left;
+            width: 33.33%;
+            position: relative;
+        }
+        .linebox .line .ce .c{
+            width:90%;
+            height: 35px;
+            margin: 0 5%;
+            margin-top: 57px;
+        }
+        .linebox .line .r{
+            float: right;
+            width: 33.33%;
+        }
+        .linebox .line .r .t{
+            font-family: Exo2-Medium;
+            font-size: 17px;
+            color: #FF6960;
+            margin-top: 45px;
+            height: 20px;
+        }
+        .linebox .line .r .t img{
+            width: 26px;
+            height: 26px;
+            float: right;
+        }
+        .linebox .line .r .t span{
+            float: right;
+            margin-left: 4px;
+        }
+        .linebox .line .r .b{
+            font-family: Exo2-Medium;
+            font-size: 13px;
+            color: #5D5C71;
+            margin-top: 10px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="tops" :class="islogin?'':'r'">
+			<div class="l" @click="islogin = true">currencies</div>
+			<div class="c"></div>
+			<div class="r" @click="islogin = false">symbol</div>
+		</div>
+        <div v-show="islogin">
+            <div class="top c">
+                <span class="name">Favorite currencies</span>
+                <div class="right"></div>
+            </div>
+            <div class="aui-card-list">
+                <div class="aui-card-list-content">
+                    <ul class="aui-list aui-media-list">
+                        <li class="aui-list-item aui-list-item-middle" @click="openwin('exc')">
+                            <div class="aui-media-list-item-inner">
+                                <div class="aui-list-item-media" style="width: 2.2rem;">
+                                    <img src="../../image/Currency/Ether@3x.png" >
+                                </div>
+                                <div class="aui-list-item-inner aui-list-item-arrow">
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title" style="font-size: 14px;color: #FFFFFF;">Etherium</div>
+                                        <div class="aui-list-item-right" style="font-size: 14px;color: #FFFFFF;">$ 1,530.04</div>
+                                    </div>
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title" style="font-size: 13px;color: #5D5C71;">ETH</div>
+                                        <div class="aui-list-item-right" style="font-size: 13px;color: #00BD9A;">+ 0.79%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="aui-list-item aui-list-item-middle" @click="openwin('exc')">
+                            <div class="aui-media-list-item-inner">
+                                <div class="aui-list-item-media" style="width: 2.2rem;">
+                                    <img src="../../image/Currency/Bitcoin@3x.png" >
+                                </div>
+                                <div class="aui-list-item-inner aui-list-item-arrow">
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title" style="font-size: 14px;color: #FFFFFF;">Bitcoin</div>
+                                        <div class="aui-list-item-right" style="font-size: 14px;color: #FFFFFF;">$ 18,374.34</div>
+                                    </div>
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title" style="font-size: 13px;color: #5D5C71;">BTC</div>
+                                        <div class="aui-list-item-right" style="font-size: 13px;color:#FF6960;">- 1.48%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="top c">
+                <span class="name">Other currencies</span>
+                <div class="right"></div>
+            </div>
+            <div class="aui-card-list">
+                <div class="aui-card-list-content">
+                    <ul class="aui-list aui-media-list">
+                        <li class="aui-list-item aui-list-item-middle" @click="openwin('exc')">
+                            <div class="aui-media-list-item-inner">
+                                <div class="aui-list-item-media" style="width: 2.2rem;">
+                                    <img src="../../image/Currency/Ripple@3x.png" >
+                                </div>
+                                <div class="aui-list-item-inner aui-list-item-arrow">
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title" style="font-size: 14px;color: #FFFFFF;">Ripple</div>
+                                        <div class="aui-list-item-right" style="font-size: 14px;color: #FFFFFF;">$ 0.18105</div>
+                                    </div>
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title" style="font-size: 13px;color: #5D5C71;">XRP</div>
+                                        <div class="aui-list-item-right" style="font-size: 13px;color: #00BD9A;">+ 0.79%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="aui-list-item aui-list-item-middle" @click="openwin('exc')">
+                            <div class="aui-media-list-item-inner">
+                                <div class="aui-list-item-media" style="width: 2.2rem;">
+                                    <img src="../../image/Currency/Litecoin@3x.png" >
+                                </div>
+                                <div class="aui-list-item-inner aui-list-item-arrow">
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title" style="font-size: 14px;color: #FFFFFF;">Litecoin</div>
+                                        <div class="aui-list-item-right" style="font-size: 14px;color: #FFFFFF;">$ 43.89</div>
+                                    </div>
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title" style="font-size: 13px;color: #5D5C71;">LTC</div>
+                                        <div class="aui-list-item-right" style="font-size: 13px;color: #00BD9A;">+ 3.26%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="aui-list-item aui-list-item-middle" @click="openwin('exc')">
+                            <div class="aui-media-list-item-inner">
+                                <div class="aui-list-item-media" style="width: 2.2rem;">
+                                    <img src="../../image/Currency/EOS@3x.png" >
+                                </div>
+                                <div class="aui-list-item-inner aui-list-item-arrow">
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title" style="font-size: 14px;color: #FFFFFF;">Etherium Classic</div>
+                                        <div class="aui-list-item-right" style="font-size: 14px;color: #FFFFFF;">$ 0.18105</div>
+                                    </div>
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title" style="font-size: 13px;color: #5D5C71;">ETH</div>
+                                        <div class="aui-list-item-right" style="font-size: 13px;color: #00BD9A;">-0.89%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="aui-list-item aui-list-item-middle" @click="openwin('exc')">
+                            <div class="aui-media-list-item-inner">
+                                <div class="aui-list-item-media" style="width: 2.2rem;">
+                                    <img src="../../image/Currency/Dash@3x.png" >
+                                </div>
+                                <div class="aui-list-item-inner aui-list-item-arrow">
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title" style="font-size: 14px;color: #FFFFFF;">Dash</div>
+                                        <div class="aui-list-item-right" style="font-size: 14px;color: #FFFFFF;">$ 0.18105</div>
+                                    </div>
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title" style="font-size: 13px;color: #5D5C71;">DASH</div>
+                                        <div class="aui-list-item-right" style="font-size: 13px;color: #00BD9A;">+15.32%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div v-show="!islogin">
+            <div class="topNav topNavs" style="overflow-x: scroll;">
+                <div class="aui-tab">
+                    <div class="aui-tab-item tapmode">ETH</div>
+                    <div class="aui-tab-item tapmode aui-active">BTC</div>
+                    <div class="aui-tab-item tapmode">WEE</div>
+                </div>
+            </div>
+            <div class="linebox">
+                <div class="line" v-for="(val,index) in data" @click="openwin('deal')">
+                    <div class="l">
+                        <div class="t">ETHERIUM</div>
+                        <div class="c">0.645334</div>
+                        <div class="b">ETH/BTC</div>
+                    </div>
+                    <div class="ce">
+                        <div class="c" :id="'line'+index"></div>
+                    </div>
+                    <div class="r">
+                        <div class="t">
+                            <span>-1.56%</span>
+                            <img src="../../image/Fall@3x_g.png">
+                        </div>
+                        <div class="b">$ 30.9M in 24h</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../script/config.js"></script>
+    <script type="text/javascript" src="../../script/newapp.js"></script>
+    <script type="text/javascript" src="../../script/vue.js"></script>
+    <script type="text/javascript" src="../../script/echarts.common.min.js"></script>
+    <script>
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                number:'',
+                islogin:false,
+                data:[
+                    {id:1},
+                    {id:1},
+                    {id:1},
+                    {id:1},
+                    {id:1},
+                    {id:1},
+                ]
+            },
+            methods: {
+                init:function () {
+                    var that = this;
+                    for(i in this.data){
+                        that.line1(i);
+                    }
+                },
+                openwin:function(type,val) {
+                    var that = this;
+                    switch (type) {
+                        case 'deal':
+                            h.openwin('nor_deal_win','/html/index',{});
+                            break;
+                    }
+                },
+                line1:function (id) {
+                    var that = this;
+                    var dom = document.getElementById("line"+id);
+                    var myChart = echarts.init(dom);
+                    option = null;
+                    var time  = [123,41,55,66,89,99,20,40,120,35];
+                    var data = [130,410,550,260,390,290,200,400,120,350];
+
+                    option = {
+
+                        backgroundColor:'rgb(00,00,00)',
+                        color:'#ffffff',
+                        xAxis: {
+                            show:false,
+
+                            data:time
+                        },
+                        yAxis: {
+                            show:false,
+
+                        },
+                        textStyle:{
+                            color:'rgba(93,92,113,1)'
+                        },
+                        grid:{
+                            left:0,
+                            top:0,
+                            bottom:0,
+                            right:0,
+                        },
+                        series: [
+                            {
+                                name:'模拟数据',
+                                type:'line',
+                                smooth:true,
+                                symbol: 'none',
+                                sampling: 'average',
+                                symbol: 'circle',
+                                showSymbol: false,
+                                symbolSize: 8,
+                                itemStyle: {
+                                    normal: {
+                                        borderWidth: 3,
+                                        borderColor: 'white',
+                                        color: 'rgb(106, 165, 238)'
+                                    }
+                                },
+                                areaStyle: {
+                                    normal: {
+                                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                            offset: 0,
+                                            color: 'rgba(52, 169, 255,0.2)'
+                                        }])
+                                    },
+
+                                },
+                                data: data
+                            }
+                        ]
+                    };
+
+                    if (option && typeof option === "object") {
+                        myChart.setOption(option, true);
+                    }
+                },
+            },
+        });
+
+        h.ready();
+    </script>
+</body>
+
+</html>

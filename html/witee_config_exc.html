@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui.2.0.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            background: rgb(4, 2, 14);
+            font-weight: 200;
+        }
+
+        #app {
+            width: 100%;
+        }
+
+        .top {
+            width: 100%;
+            height: 4rem;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .name {
+            color: #5D5C71;
+            letter-spacing: 2px;
+            font-size: 0.6rem;
+        }
+
+        .right {
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-transform: Uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+            font-size: 0.6rem;
+        }
+
+        .right input {
+            margin: 0 0.5rem;
+        }
+
+        .aui-switch {
+            border-color: transparent;
+            background-color: #1E1C2A;
+        }
+
+        .c {
+            background: #14111D;
+            text-transform: Uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            font-size: 0.6rem;
+        }
+
+        .aui-list,.aui-list .aui-list-item {
+            background-image: none;
+        }
+
+        .aui-list .aui-list-item {
+            padding-left: 1rem;
+        }
+
+        .aui-card-list,.aui-list {
+            background: transparent;
+        }
+
+        .btns {
+            background: #34A9FF;
+            width: 37%;
+            padding: 0.7rem 0;
+            text-align: center;
+            font-family: Exo2-SemiBold;
+            color: #FFFFFF;
+            text-transform: Uppercase;
+            letter-spacing: 2px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            -webkit-clip-path: polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 0);
+        }
+
+        .aui-list .aui-list-item-title {
+            color: #34A9FF;
+        }
+
+        .aui-list .aui-list-item-text {
+            color: #5D5C71;
+        }
+
+        .aui-media-list .aui-list-item-inner {
+            border-bottom: 1px solid #1E1C2A;
+            padding-top: 1.5rem;
+        }
+        @-webkit-keyframes rotation{
+        from {-webkit-transform: rotate(0deg);}
+        to {-webkit-transform: rotate(360deg);}
+        }
+        .btns img{
+            width: 18px;
+            height: 18px;
+            text-align: center;
+            margin: 0 auto;
+            -webkit-transform: rotate(360deg);
+            animation: rotation 3s linear infinite;
+            -moz-animation: rotation 3s linear infinite;
+            -webkit-animation: rotation 3s linear infinite;
+            -o-animation: rotation 3s linear infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="top">
+            <span class="name">Condition</span>
+            <div class="right">
+                <span>IDLE</span>
+                <input class="aui-switch" type="checkbox" name="demo2" checked="">
+                <span>SCHEDULE</span>
+            </div>
+        </div>
+        <div class="top c">
+            <span class="name">Binance API</span>
+            <div class="right"></div>
+        </div>
+        <div class="aui-card-list">
+            <div class="aui-card-list-content">
+                <ul class="aui-list aui-media-list">
+                    <li class="aui-list-item aui-list-item-middle">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">API Key</div>
+                                </div>
+                                <div class="aui-list-item-text" style="margin-top: 0.5rem;">API key here</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item aui-list-item-middle">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">API Secret</div>
+                                </div>
+                                <div class="aui-list-item-text" style="margin-top: 0.5rem;">API Secret here</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="top">
+            <span class="name" style="color: #FFFFFF;">Support</span>
+            <div class="btns" v-if="!submit" @click="save">save</div>
+            <div class="btns" v-if="submit"><img src="../image/Icons/Loader@3x.png"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../script/config.js"></script>
+    <script type="text/javascript" src="../script/newapp.js"></script>
+    <script type="text/javascript" src="../script/vue.js"></script>
+    <script>
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                number:'',
+                submit:false
+            },
+            methods: {
+                init:function () {
+
+
+                },
+                save:function() {
+                    this.submit = true;
+                    setTimeout(function(){
+                        h.closeWin();
+                    },5000)
+                }
+            },
+        });
+
+        h.ready();
+    </script>
+</body>
+
+</html>

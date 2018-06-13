@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui.2.0.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/clubtheme.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            background: rgb(4, 2, 14);
+            font-weight: 200;
+        }
+
+        #app {
+            width: 100%;
+            padding: 2rem 30px 0 30px;
+        }
+        .line{
+            width:100%;
+            height: 156px;
+            border-bottom:1px solid #1E1C2A;
+        }
+        .line .t{
+            margin-top: 20px;
+            font-family: Exo2-Regular;
+            font-size: 14px;
+            color: #34A9FF;
+            line-height: 24px;
+        }
+        .line .b{
+            font-family: Exo2-Regular;
+            font-size: 14px;
+            color: #5D5C71;
+            line-height: 24px;
+            margin-top: 10px;
+        }
+        .btns{
+            background: #34A9FF;
+            width: 45%;
+            padding: 0.7rem 0;
+            margin: 25px auto 45px auto;
+            text-align: center;
+            text-transform: Uppercase;
+            font-family: Exo2-SemiBold;
+            font-size: 12px;
+            color: #FFFFFF;
+            letter-spacing: 2px;
+            -webkit-clip-path: polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 0);
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="line">
+            <div class="t">Feedback</div>
+            <div class="b">Let Us Know Your Thoughts And Suggestions</div>
+        </div>
+
+        <div class="btns">submit</div>
+    </div>
+    <script type="text/javascript" src="../../script/config.js"></script>
+    <script type="text/javascript" src="../../script/newapp.js"></script>
+    <script type="text/javascript" src="../../script/vue.js"></script>
+    <script type="text/javascript">
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                init:function () {
+
+                },
+
+            },
+        });
+
+        h.ready();
+    </script>
+</body>
+
+</html>

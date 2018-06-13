@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui.2.0.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/clubtheme.css" />
+    <style>
+
+		body { -webkit-user-select: none; user-select: none; }
+		body,html{
+			position: relative;
+            height: 100%;
+            background: rgb(4, 2, 14);
+            font-weight: 200;
+		}
+        #app {
+            width: 100%;
+        }
+		.current-index {
+            font-size: 2rem;
+            height: 80px;
+            width: 80px;
+            left: 50%;
+            top: 50%;
+            margin-left: -40px;
+            margin-top: -90px;
+            background:rgba(52,169,255,0.6);
+            font-family: Arial;
+            display: none;
+            text-align: center;
+            line-height: 80px;
+			position: fixed;
+			color:#fff;
+			border-radius: 10px;
+        }
+		.contact-index{
+            position: fixed;
+            right:0px;
+            width: 22px;
+			font-family: Exo2-Bold;
+			font-size: 10px;
+			color: #34A9FF;
+			line-height: 17px;
+			height: 100%;
+			top:0;
+			z-index: 99;
+        }
+		.contact-index .box{
+			width: 100%;
+			height: 442px;
+			position: relative;
+			top:50%;
+			margin-top: -221px;
+		}
+
+		.contact-index span{
+			width: 100%;
+			height: 17px;
+			display: inline-block;
+		}
+		.main{
+			width: 100%;
+			height: auto;
+			overflow: hidden;
+			padding: 0 30px;
+			overflow-y: auto;
+		}
+		.main .top{
+			font-family: Exo2-Bold;
+			font-size: 12px;
+			color: #34A9FF;
+			letter-spacing: 2px;
+			margin: 15px 0;
+		}
+		.main .top.ts{
+			margin-bottom: 0px;
+		}
+		.line{
+			width: 100%;
+			height: 85px;
+			border-bottom:1px solid #1E1C2A;
+		}
+		.line .t{
+			font-family: Exo2-SemiBold;
+			font-size: 14px;
+			color: #FFFFFF;
+			padding-top: 20px;
+		}
+		.line .b {
+			font-family: Exo2-Medium;
+			font-size: 12px;
+			color: #5D5C71;
+			margin-top: 11px;
+			width: 100%;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+    </style>
+</head>
+<body>
+	<div id="app">
+	    <!--当前显示字母-->
+	    <div class="current-index"></div>
+	    <!--字母索引-->
+	    <div class="contact-index">
+			<div class="box">
+		        <span  data-index-name="A">A</span>
+		        <span  data-index-name="B">B</span>
+		        <span  data-index-name="C">C</span>
+		        <span  data-index-name="D">D</span>
+		        <span  data-index-name="E">E</span>
+		        <span  data-index-name="F">F</span>
+		        <span  data-index-name="G">G</span>
+		        <span  data-index-name="H">H</span>
+		        <span  data-index-name="I">I</span>
+		        <span  data-index-name="J">J</span>
+		        <span  data-index-name="K">K</span>
+		        <span  data-index-name="L">L</span>
+		        <span  data-index-name="M">M</span>
+		        <span  data-index-name="N">N</span>
+		        <span  data-index-name="O">O</span>
+		        <span  data-index-name="P">P</span>
+		        <span  data-index-name="Q">Q</span>
+		        <span  data-index-name="R">R</span>
+		        <span  data-index-name="S">S</span>
+		        <span  data-index-name="T">T</span>
+		        <span  data-index-name="U">U</span>
+		        <span  data-index-name="V">V</span>
+		        <span  data-index-name="W">W</span>
+		        <span  data-index-name="X">X</span>
+		        <span  data-index-name="Y">Y</span>
+		        <span  data-index-name="Z">Z</span>
+			</div>
+	    </div>
+	    <!--联系人列表-->
+	    <div class="main contact-scroll-area">
+			<div class="contact-list">
+				<p class="top">Recent</p>
+				<div class="line">
+					<div class="t">Jessicaalba</div>
+					<div class="b">DvkfzUqEG5x7ZpVJBKwsGi3GKN4RGN0iqnH1exhF</div>
+				</div>
+				<div class="line">
+					<div class="t">motira0321</div>
+					<div class="b">EwR1ztpfjunTNc2NOKN7fydjKTwqw8U3Hf7qdVcr</div>
+				</div>
+				<p class="top">All Contacts</p>
+				<div class="group-name" data-group-name="A"></div>
+				<p class="top ts">A</p>
+				<div class="line">
+					<div class="t">Jessicaalba</div>
+					<div class="b">DvkfzUqEG5x7ZpVJBKwsGi3GKN4RGN0iqnH1exhF</div>
+				</div>
+				<div class="line">
+					<div class="t">motira0321</div>
+					<div class="b">EwR1ztpfjunTNc2NOKN7fydjKTwqw8U3Hf7qdVcr</div>
+				</div>
+				<div class="group-name" data-group-name="B"></div>
+				<p class="top ts">B</p>
+				<div class="line">
+					<div class="t">Jessicaalba</div>
+					<div class="b">DvkfzUqEG5x7ZpVJBKwsGi3GKN4RGN0iqnH1exhF</div>
+				</div>
+				<div class="line">
+					<div class="t">motira0321</div>
+					<div class="b">EwR1ztpfjunTNc2NOKN7fydjKTwqw8U3Hf7qdVcr</div>
+				</div>
+				<div class="group-name" data-group-name="C"></div>
+				<p class="top ts">C</p>
+				<div class="line">
+					<div class="t">Jessicaalba</div>
+					<div class="b">DvkfzUqEG5x7ZpVJBKwsGi3GKN4RGN0iqnH1exhF</div>
+				</div>
+				<div class="line">
+					<div class="t">motira0321</div>
+					<div class="b">EwR1ztpfjunTNc2NOKN7fydjKTwqw8U3Hf7qdVcr</div>
+				</div>
+			</div>
+	    </div>
+	</div>
+	<script type="text/javascript" src="../../script/config.js"></script>
+    <script type="text/javascript" src="../../script/newapp.js"></script>
+    <script type="text/javascript" src="../../script/vue.js"></script>
+    <script type="text/javascript">
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                tab:'gbi'
+            },
+            methods: {
+                init:function () {
+					var _clientHeight = window.innerHeight;
+			        var indexObj = h.dom(".contact-index");
+			        var currentIndexObj = h.dom(".current-index");
+			        var contactListObj = h.dom(".contact-list");
+			        var scrollArea = h.dom('.contact-scroll-area');
+
+			        indexObj.style.height = _clientHeight + "px";
+			        scrollArea.style.height = _clientHeight + "px";
+
+			        // 索引字母个数
+			        var indexSize = 26;
+			        // 索引列表高度
+			        var indexObj_height = 442;
+
+			        // 滚动到指定字母位置
+			        function scrollToWord(word) {
+			            if (word) {
+			                var scrollObj = h.dom(".group-name[data-group-name=" + word + "]");
+			                if (scrollObj) {
+			                    scrollArea.scrollTop = scrollObj.offsetTop + document.documentElement.scrollTop;
+			                }
+			            }
+			        }
+			        // 计算字母对应位置
+			        function calcWordToOffset(event) {
+			            var touch = event.targetTouches[0];
+			            var clientY = touch.clientY > 0 ? touch.clientY : 0;
+			            var _index = Math.floor((clientY-(_clientHeight-442)/2) / (indexObj_height / indexSize)) +97;
+			            var word = "";
+			            // A-Z
+						if (_index >= 97 && _index <= 122) {
+			                currentIndexObj.innerHTML = String.fromCharCode(_index).toUpperCase();
+			                word = String.fromCharCode(_index).toUpperCase();
+						}
+			            scrollToWord(word);
+			        }
+
+			        // 1.0 为字母索引绑定touch事件
+			        // 1.1 一触摸触发
+			        indexObj.addEventListener("touchstart", function (event) {
+			            if (event.targetTouches.length == 1) {
+			                // 显示当前字母
+								currentIndexObj.style.cssText = "display:block;";
+				                // 高亮索引区域
+				                indexObj.classList.add("H-theme-background-color-eee");
+
+				                calcWordToOffset(event);
+
+			            }
+			        }, false);
+			        // 1.2 触摸过程
+			        indexObj.addEventListener("touchmove", function (event) {
+			            if (event.targetTouches.length == 1) {
+			                event.preventDefault();
+			                calcWordToOffset(event);
+			            }
+			        }, false);
+
+			        // 1.3 离开触摸
+			        indexObj.addEventListener("touchend", function (event) {
+			            // 显示当前字母
+							currentIndexObj.style.cssText = "display:none;";
+				            // 高亮索引区域
+				            indexObj.classList.remove("H-theme-background-color-eee");
+
+			        }, false);
+
+                },
+
+            },
+        });
+
+        h.ready();
+    </script>
+
+</body>
+</html>

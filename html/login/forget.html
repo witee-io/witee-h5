@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui.2.0.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/clubtheme.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            background: rgb(4, 2, 14);
+            font-weight: 200;
+        }
+
+        #app {
+            width: 100%;
+            padding: 2rem 30px 0 30px;
+        }
+        .line{
+            width:100%;
+            height: 86px;
+            border-bottom:1px solid #1E1C2A;
+        }
+        .line .t{
+            margin-top: 20px;
+            font-family: Exo2-Regular;
+            font-size: 14px;
+            color: #34A9FF;
+            line-height: 24px;
+        }
+        .line .b{
+            font-family: Exo2-Regular;
+            font-size: 14px;
+            color: #5D5C71;
+            line-height: 24px;
+            margin-top: 10px;
+        }
+		.line .b span{
+			font-family: Exo2-Regular;
+			font-size: 14px;
+			color: #FFFFFF;
+			line-height: 24px;
+			margin-right: 47px
+		}
+		.bo{
+			margin-top: 20px;
+		}
+        .btns{
+            background: #34A9FF;
+            width: 45%;
+            padding: 0.7rem 0;
+            margin: 25px auto 45px auto;
+            text-align: center;
+            text-transform: Uppercase;
+            font-family: Exo2-SemiBold;
+            font-size: 12px;
+            color: #FFFFFF;
+            letter-spacing: 2px;
+            -webkit-clip-path: polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 0);
+            float: right;
+        }
+		.forget{
+			font-family: Exo2-Medium;
+		    font-size: 12px;
+		    color: #FFFFFF;
+		    width: 45%;
+		    padding: 0.7rem 0;
+		    height: 52px;
+		    line-height: 68px;
+		    float: left;
+		}
+		.top{
+			display: flex;
+			height: 25px;
+			width: 100%;
+			margin-bottom: 70px;
+		}
+		.top .l{
+			font-family: Exo2-Bold;
+			font-size: 12px;
+			color: #34A9FF;
+			letter-spacing: 2px;
+			width: 56px;
+			line-height: 25px;
+		}
+		.top .r{
+			font-family: Exo2-Bold;
+			font-size: 12px;
+			color: #5D5C71;
+			letter-spacing: 2px;
+			width: 60px;
+			line-height: 25px;
+			margin-left: 5px;
+		}
+		.top .c{
+			width: calc( 100% - 150px);
+			height: 12.5px;
+			border-bottom: 1px solid #353343;
+			margin: 0 17px;
+			position: relative;
+		}
+		.top .c:before{
+			content: '';
+			width: 25px;
+			height: 25px;
+			position: absolute;
+			left: -12.5px;
+			border: 1px solid #34A9FF;
+			border-radius: 50%;
+			transition: all 0.3s ease-in;
+		}
+		.top .c:after{
+			content: '';
+			width: 5px;
+			height: 5px;
+			position: absolute;
+			background: #34A9FF;
+			border-radius: 50%;
+			top: 10px;
+			left: -0.5px;
+			transition: all 0.3s ease-in;
+		}
+		.top.r .l{
+			color:#5D5C71;
+		}
+		.top.r .r{
+			color:#34A9FF;
+		}
+
+		.top.r .c::before{
+			margin-left: 100%;
+		}
+		.top.r .c::after{
+			margin-left: 100%;
+		}
+		.rimg{
+			width:auto;
+            font-family: Exo2-Regular;
+            font-size: 14px;
+            color: #00BD9A;
+            line-height: 24px;
+			float: right;
+		}
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+
+	        <div class="line">
+	            <div class="t">AccountName</div>
+	            <div class="b">Your Account</div>
+	        </div>
+	        <div class="line">
+	            <div class="t">Your Email</div>
+	            <div class="b">Your Account <div class="rimg">Send Code</div></div>
+	        </div>
+			<div class="line">
+	            <div class="t">Verification code</div>
+	            <div class="b">The Code in your email </div>
+	        </div>
+			<div class="bo">
+				<div class="forget"></div>
+		        <div class="btns">Verify</div>
+			</div>
+
+    </div>
+    <script type="text/javascript" src="../../script/config.js"></script>
+    <script type="text/javascript" src="../../script/newapp.js"></script>
+    <script type="text/javascript" src="../../script/vue.js"></script>
+    <script type="text/javascript">
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+            },
+            methods: {
+                init:function () {
+
+                },
+
+            },
+        });
+
+        h.ready();
+    </script>
+</body>
+
+</html>

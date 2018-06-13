@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="css/aui.2.0.css" />
+    <link rel="stylesheet" type="text/css" href="css/clubtheme.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            background: rgb(4, 2, 14);
+            font-weight: 200;
+        }
+
+        #app {
+            width: 100%;
+        }
+        .icon{
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0);
+            margin: 0 auto;
+        }
+        .aui-active .icon{
+            background: #34A9FF;
+        }
+        .aui-bar-tab-item>img{
+            width: 30px;
+            height: 30px;
+            margin: 0 auto 5px auto;
+
+        }
+        #app.active{
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak :class="bg?'':'active'">
+        <div class="header">
+            <header class="aui-bar aui-bar-nav header1" id="header" >
+                <a class="aui-pull-left" >
+
+                </a>
+                <div class="aui-title">
+                    WITEE
+                </div>
+                <a class="aui-pull-right" >
+                    <img src="image/Icons/Top/Notifications@3x.png" v-if="tab=='gbi' || tab=='quatation' || tab=='witee'" @click="openwin('Notifications')">
+
+                    <img src="image/Icons/Top/Settings@3x.png" v-if="tab=='gbi'" @click="openwin('settings')">
+                    <img src="image/Icons/Dots_2@3x.png" v-if="tab=='quatation'" @click="openwin('boxtitle')">
+                    <img src="image/Icons/Cog@3x.png" v-if="tab == 'profile'" @click="openwin('usersettings')">
+                    <img src="image/Icons/Quatation@3x_w.png" v-if="tab=='nor'" @click="openwin('nor')">
+
+                    <img src="image/Icons/Dots_2@3x.png" v-if="tab=='witee'" @click="openwin('witee')">
+
+                </a>
+            </header>
+        </div>
+        <footer class="aui-bar aui-bar-tab" id="footer">
+            <div class="aui-bar-tab-item" @click="tabfun('gbi',0)" :class="tab=='gbi'?'aui-active':''" tapmode>
+                <img :src="tab=='gbi'?'image/Icons/1witee@3x_active.png':'image/Icons/1witee@3.png'">
+                <div class="aui-bar-tab-label"><div class="icon"></div></div>
+            </div>
+            <div class="aui-bar-tab-item" @click="tabfun('quatation',1)" :class="tab=='quatation'?'aui-active':''" tapmode>
+                <img :src="tab=='quatation'?'image/Icons/Box@3x_active.png':'image/Icons/Box@3x.png'">
+                <div class="aui-bar-tab-label"><div class="icon"></div></div>
+            </div>
+            <div class="aui-bar-tab-item" @click="tabfun('witee',2)" :class="tab=='witee'?'aui-active':''" tapmode>
+                <img :src="tab=='witee'?'image/Icons/Buyback@3x_active.png':'image/Icons/Buyback@3x.png'">
+                <div class="aui-bar-tab-label"><div class="icon"></div></div>
+            </div>
+            <div class="aui-bar-tab-item" @click="tabfun('nor',3)" :class="tab=='nor'?'aui-active':''" tapmode>
+                <img :src="tab=='nor'?'image/Icons/Index3bi_active@3x.png':'image/Icons/Index3bi@3x.png'">
+                <div class="aui-bar-tab-label"><div class="icon"></div></div>
+            </div>
+            <div class="aui-bar-tab-item" @click="tabfun('profile',4)" :class="tab=='profile'?'aui-active':''" tapmode>
+                <img :src="tab=='profile'?'image/Icons/Witee@3x_active.png':'image/Icons/Witee@3x.png'">
+                <div class="aui-bar-tab-label"><div class="icon"></div></div>
+            </div>
+        </footer>
+    </div>
+    <script type="text/javascript" src="script/config.js"></script>
+    <script type="text/javascript" src="script/newapp.js"></script>
+    <script type="text/javascript" src="script/vue.js"></script>
+    <script type="text/javascript">
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                tab:'gbi',
+                bg:false,
+            },
+            methods: {
+                init:function () {
+                    var that = this;
+                    var istouchid = h.gdata("istouchid");
+                    if(istouchid.setting){
+                        api.openFrame({
+                            name : 'touchid',
+                            url : "html/setting/touchid.html",
+                            rect : {
+                                x : 0,
+                                y : 0,
+                                w : 'auto',
+                                h : api.winHeight,
+                            },
+                            bounces : false,
+                            hScrollBarEnabled : false,
+                            bgColor : 'rgba(0,0,0,0)',
+                        });
+                    } else {
+                        var ismatrixLock = h.gdata("ismatrixLock");
+                        if(ismatrixLock.setting){
+                            var matrixLock = api.require('matrixLock');
+                            matrixLock.checkGesture(function(ret, err) {
+                                if (ret.code == 0) {
+                                    var matrixLock = api.require('matrixLock');
+                                    matrixLock.openEnterView({
+
+                                        bg:'rgb(4, 2, 14)',
+                                        matrix:{
+                                            radius:40,
+                                            activeBg:'#34A9FF',
+                                            inactiveBg:'#34A9FF',
+                                            normalLine:'#34A9FF',
+                                            arrow:'#34A9FF'
+                                        },
+                                    },function(ret, err) {
+                                        if (ret.status) {
+                                            var matrixLock = api.require('matrixLock');
+                                            matrixLock.closeEnterView();
+                                            that.bg = true;
+                                            that.int();
+                                        }
+                                    });
+                                } else {
+                                    that.bg = true;
+                                    that.int();
+                                }
+                            });
+                        } else {
+                            that.bg = true;
+                            that.int();
+                        }
+
+                    }
+                },
+                int:function(){
+                    api.parseTapmode();
+                    //初始化
+                    var header = h.dom('#header');
+                    var footer = h.dom('#footer');
+                    //沉浸式
+                    if (api.statusBarAppearance) {
+        				h.fixStatusBar(header,footer);
+        				api.setStatusBarStyle({
+        					style : 'light'
+        				});
+        			}
+                    var headerPos = h.offset(header).h;
+                    var footerPos = h.offset(footer).h;
+
+                    api.openFrameGroup({
+                        name : 'rootgroup',
+                        rect : {
+                            x : 0,
+                            y : headerPos,
+                            w : 'auto',
+                            h : api.winHeight - headerPos - footerPos,
+                        },
+                        index:0,
+                        preload:0,
+                        scrollEnabled : false,
+                        frames : [
+                            {
+                                name : 'witee',
+                                url : 'html/witee.html',
+                                bounces : false
+                            },
+                            {
+                                name : 'buyback_nor',
+                                url : 'html/buyback_nor.html',
+                                bounces : false
+                            },
+
+                            {
+                                name : 'quatation',
+                                url : 'html/quatation.html',
+                                bounces : false
+                            },
+                            {
+                                name : 'home_gbi',
+                                url : 'html/home_gbi.html',
+                                bounces : false
+                            },
+                            {
+                                name : 'profile',
+                                url : 'html/profile.html',
+                                bounces : false
+                            },
+                        ]
+                    }, function(ret, err) {
+
+                    });
+                },
+                tabfun:function(val,index){
+                    this.tab = val;
+                    api.setFrameGroupIndex({
+                        name: 'rootgroup',
+                        index: index
+                    });
+                },
+                openwin:function(type,val) {
+                    var that = this;
+                    switch (type) {
+                        case 'Notifications':
+                            h.openwin('home_notice_win','/html',{});
+                            break;
+                        case 'settings':
+                            h.openwin('witee_config_win','/html',{});
+                            break;
+                        case 'nor':
+                            h.openwin('nor_config_win','/html/index',{});
+                            break;
+                        case 'boxtitle':
+                            api.execScript({
+                                frameName: 'buyback_nor',
+                                script: 'vm.boxtitle = !vm.boxtitle;'
+                            });
+
+                            break;
+                        case 'usersettings':
+                            h.openwin('setting_win','/html/setting',{});
+                            break;
+                        case 'witee':
+                            api.execScript({
+                                frameName: 'quatation',
+                                script: 'vm.boxtitle = !vm.boxtitle;'
+                            });
+                            break;
+                    }
+                }
+            },
+        });
+
+        h.ready();
+    </script>
+</body>
+
+</html>

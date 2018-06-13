@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui.2.0.css" />
+    <link rel="stylesheet" type="text/css" href="../css/clubtheme.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            background: rgb(4, 2, 14);
+            font-weight: 200;
+        }
+
+        #app {
+            width: 100%;
+        }
+        .icon{
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0);
+            margin: 0 auto;
+        }
+        .aui-active .icon{
+            background: #34A9FF;
+        }
+        .aui-bar-tab-item>img{
+            width: 30px;
+            height: 30px;
+            margin: 0 auto 5px auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="header">
+            <header class="aui-bar aui-bar-nav header1" id="header" >
+                <a class="aui-pull-left"  onclick="h.closeWin();" >
+                    <img src="../image/Icons/Left@3x.png" style="margin-right:10px;">Binance
+                </a>
+                <div class="aui-title">
+
+                </div>
+                
+            </header>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="../script/config.js"></script>
+    <script type="text/javascript" src="../script/newapp.js"></script>
+    <script type="text/javascript" src="../script/vue.js"></script>
+    <script type="text/javascript">
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                tab:'gbi'
+            },
+            methods: {
+                init:function () {
+                    api.parseTapmode();
+                    var header = h.dom('#header');
+                    //沉浸式
+                    if (api.statusBarAppearance) {
+        				h.fixStatusBar(header);
+        				api.setStatusBarStyle({
+        					style : 'light'
+        				});
+        			}
+                    var headerPos = h.offset(header).h;
+                    api.openFrame({
+                        name : 'witee_config_exc',
+                        url : "witee_config_exc.html",
+                        rect : {
+                            x : 0,
+                            y : headerPos,
+                            w : 'auto',
+                            h : api.winHeight - headerPos,
+                        },
+                        pageParam : api.pageParam,
+                        bounces : false,
+                        hScrollBarEnabled : false,
+                        bgColor : 'rgba(0,0,0,0)',
+                    });
+
+                    api.addEventListener({
+                        name: 'keyback'
+                    }, function(ret, err) {
+                        h.closeWin();
+                    });
+
+                },
+            },
+        });
+
+        h.ready();
+    </script>
+</body>
+
+</html>

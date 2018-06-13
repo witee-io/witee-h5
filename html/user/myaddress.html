@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui.2.0.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/clubtheme.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            font-weight: 200;
+            background: rgb(4, 2, 14);
+
+        }
+
+        #app {
+            width: 100%;
+            padding: 0 30px;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+        }
+
+        .ewm{
+            width: 315px;
+            height: 315px;
+            margin: 0 auto;
+            margin-top: 2rem;
+        }
+        .m{
+            margin-top: 53px;
+            width: 80%;
+            word-wrap:break-word;
+            position: relative;
+        }
+        .m .t{
+            font-family: Exo2-Medium;
+            font-size: 12px;
+            color: #FFFFFF;
+        }
+        .m .b{
+            font-family: Exo2-Medium;
+            font-size: 12px;
+            color: #5D5C71;
+            margin-top: 6px;
+        }
+        .m .copy{
+            width: 26px;
+            height: 26px;
+            position: absolute;
+            right: -20%;
+            top:50%;
+            margin-top: -13px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <img src="../../image/ewm.png" class="ewm">
+        <div class="m">
+            <div class="t">5Fea1625d804031363F05e083D2DC3e2D143365c</div>
+            <div class="b">My ETH&WEE Address</div>
+            <img src="../../image/Copy@3x.png" class="copy" @click="copy('5Fea1625d804031363F05e083D2DC3e2D143365c')">
+        </div>
+    </div>
+    <script type="text/javascript" src="../../script/config.js"></script>
+    <script type="text/javascript" src="../../script/newapp.js"></script>
+    <script type="text/javascript" src="../../script/vue.js"></script>
+    <script type="text/javascript">
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                init:function () {
+
+                },
+                copy:function(val){
+                    var clipBoard = api.require('clipBoard');
+                    clipBoard.set({
+                        value: val
+                    }, function(ret, err) {
+                        if (ret) {
+                            api.toast({
+                                msg: '复制成功',
+                                duration: 2000,
+                                location: 'bottom'
+                            });
+                        } else {
+                            api.toast({
+                                msg: '复制失败',
+                                duration: 2000,
+                                location: 'bottom'
+                            });
+                        }
+                    });
+                }
+
+            },
+        });
+
+        h.ready();
+    </script>
+</body>
+
+</html>

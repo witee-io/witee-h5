@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui.2.0.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/clubtheme.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            background: rgb(4, 2, 14);
+            font-weight: 200;
+
+        }
+
+        #app {
+            width: 100%;
+            padding-top: 1.5rem;
+            padding-bottom: 1rem;
+        }
+        .head{
+            boder-top:1px solid rgb(30,28,41);
+            width: 100%;
+            padding: 0 15px;
+        }
+        .ti{
+            font-family: Exo2-Medium;
+            font-size: 14px;
+            color: #5D5C71;
+            line-height: 20px;
+        }
+        .headbox{
+            width: 100%;
+            height: auto;
+            margin-top: 6px;
+        }
+        .headbox .con{
+            width: auto;
+            margin-right: 24px;
+            float: left;
+        }
+        .headbox .con p{
+            font-family: Exo2-Medium;
+            font-size: 12px;
+            color: #5D5C71;
+        }
+        .headbox .con p.g{
+            ffont-family: Exo2-Regular;
+            font-size: 14px;
+            color: #00BD9A;
+            line-height: 24px;
+        }
+        .headbox .con p.b{
+            font-family: Exo2-Regular;
+            font-size: 14px;
+            color: #FFFFFF;
+            line-height: 24px;
+        }
+        .headbox .con p.r{
+            font-family: Exo2-Regular;
+            font-size: 14px;
+            color: #FF6960;
+            line-height: 24px;
+        }
+        .bg{
+            width: 100%;
+            height: 330px;
+            margin-bottom: 30px;
+        }
+
+        .bgs{
+            width: 100%;
+            height: 56px;
+        }
+        .tab{
+            width:100%;
+            height: atuo;
+            background: rgb(4, 2, 14);
+            position: fixed;
+            bottom:0;
+            padding: 18px 30px 28px 30px;
+        }
+        .font{
+            float: left;
+            width: 22px;
+            height: 22px;
+            margin-right: 30px;
+            font-family: Exo2-Medium;
+            font-size: 22px;
+            color: #353343;
+            line-height: 22px;
+        }
+        .le{
+            width: 20px;
+            height: 20px;
+            float: left;
+        }
+        .ri{
+            width: 20px;
+            height: 20px;
+            float: right;
+        }
+        .boxtitle{
+            position: fixed;
+            bottom: 68px;
+            left: 30px;
+            background: #1E1C2A;
+            border: 2px solid #34A9FF;
+            width: 80px;
+            height: auto;
+            padding: 0 13px;
+        }
+        .boxtitle .text{
+            width: 100%;
+            height: 33px;
+            font-family: Exo2-Medium;
+            font-size: 12px;
+            color: #34A9FF;
+            line-height: 33px;
+        }
+        .boxtitle .text.border{
+            border-bottom: 1px solid #083150;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="head">
+            <div class="ti">ETH&nbsp;&nbsp;&nbsp;&nbsp;$&nbsp;1,530.04</div>
+            <div class="headbox">
+                <div class="con">
+                    <p class="g">0.0567</p>
+                    <p>Bid</p>
+                </div>
+                <div class="con">
+                    <p class="b">0.0567</p>
+                    <p>Price</p>
+                </div>
+                <div class="con">
+                    <p class="r">0.0567</p>
+                    <p>Ask</p>
+                </div>
+            </div>
+        </div>
+        <div class="bg" id="container"  v-show="state"></div>
+        <div class="bg" id="container1" v-show="!state"></div>
+        <div class="bgs" id="line1" ></div>
+        <div class="boxtitle" v-if="boxtitle">
+            <div class="text border">M1</div>
+            <div class="text">M5</div>
+            <div class="text">M15</div>
+            <div class="text">M30</div>
+            <div class="text">H1</div>
+            <div class="text">H4</div>
+            <div class="text">H12</div>
+            <div class="text">D1</div>
+            <div class="text">D7</div>
+            <div class="text">W1</div>
+        </div>
+        <div class="tab">
+            <div class="font" @click="boxtitle = !boxtitle ">
+                H1
+            </div>
+            <img src="../../image/Loader@3x.png" class="le">
+            <img :src="state?'../../image/Candle@3x.png':'../../image/depth@3x.png'" @click="statefun()" class="ri">
+        </div>
+    </div>
+    <script type="text/javascript" src="../../script/config.js"></script>
+    <script type="text/javascript" src="../../script/newapp.js"></script>
+    <script type="text/javascript" src="../../script/vue.js"></script>
+    <script type="text/javascript" src="../../script/echarts.common.min.js"></script>
+    <script>
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                state:true,
+                boxtitle:false
+            },
+            methods: {
+                init:function () {
+                    this.line1();
+                    this.line2();
+                },
+                statefun:function(){
+                    var that = this;
+                    this.state = !this.state;
+                    setTimeout(function(){
+                        if(that.state){
+                            that.line2()
+                        } else {
+                            that.line3()
+                        }
+                    },300)
+
+                },
+                line3:function(){
+                    var dom = document.getElementById("container1");
+                    var myChart = echarts.init(dom);
+                    var app = {};
+                    option = null;
+
+                    option = {
+
+                            xAxis : [
+                                {
+                                    type : 'category',
+                                    boundaryGap : false,
+                                    axisLine: {onZero: false},
+                                    data : [
+                                        '9:00',
+                                        '10:00',
+                                        '11:00',
+                                        '12:00',
+                                        '13:00',
+                                        '14:00',
+                                        '15:00'
+                                    ].map(function (str) {
+                                        return str.replace(' ', '\n')
+                                    })
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    max: 9,
+                                    show:false
+                                },
+                                {
+                                    nameLocation: 'start',
+                                    max: 9,
+                                    type: 'value',
+                                    inverse: true,
+                                    splitLine: {
+                                        show: true,
+                                        lineStyle: {
+                                            // 使用深浅的间隔色
+                                            opacity:0.1,
+
+                                        }
+                                    },
+                                }
+                            ],
+                            series: [
+                                {
+                                    name:'流量',
+                                    type:'line',
+                                    animation: false,
+                                    areaStyle: {
+                                        normal: {}
+                                    },
+                                    lineStyle: {
+                                        normal: {
+                                            width: 1
+                                        }
+                                    },
+                                    markArea: {
+                                        silent: true,
+                                        data: [[{
+                                            xAxis: '2009/9/12\n7:00'
+                                        }, {
+                                            xAxis: '2009/9/22\n7:00'
+                                        }]]
+                                    },
+                                    data:[0.1,0.5,0.4,1,3,3,4.2]
+                                },
+                                {
+                                    name:'降雨量',
+                                    type:'line',
+                                    yAxisIndex:1,
+                                    animation: false,
+                                    areaStyle: {
+                                        normal: {}
+                                    },
+                                    lineStyle: {
+                                        normal: {
+                                            width: 1
+                                        }
+                                    },
+                                    markArea: {
+                                        silent: true,
+                                        data: [[{
+                                            xAxis: '2009/9/10\n7:00'
+                                        }, {
+                                            xAxis: '2009/9/20\n7:00'
+                                        }]]
+                                    },
+                                    data: [0.1,0.5,0.4,1,3,3,4.2]
+                                }
+                            ]
+                        };
+
+                    if (option && typeof option === "object") {
+                        myChart.setOption(option, true);
+                    }
+                },
+                line2:function(){
+                    var dom = document.getElementById("container");
+                    var myChart = echarts.init(dom);
+                    var app = {};
+                    option = null;
+                    var upColor = '#FF6960';
+                    var upBorderColor = '#FF6960';
+                    var downColor = '#00BD9A';
+                    var downBorderColor = '#00BD9A';
+                    // 数据意义：开盘(open)，收盘(close)，最低(lowest)，最高(highest)
+                    var data0 = splitData([
+                        ['2013/1/24', 2320.26,2320.26,2287.3,2362.94],
+                        ['2013/1/25', 2300,2291.3,2288.26,2308.38],
+                        ['2013/1/28', 2295.35,2346.5,2295.35,2346.92],
+                        ['2013/1/29', 2347.22,2358.98,2337.35,2363.8],
+                        ['2013/1/30', 2360.75,2382.48,2347.89,2383.76],
+                        ['2013/1/31', 2383.43,2385.42,2371.23,2391.82],
+                        ['2013/2/1', 2377.41,2419.02,2369.57,2421.15],
+                        ['2013/2/4', 2425.92,2428.15,2417.58,2440.38],
+                        ['2013/2/5', 2411,2433.13,2403.3,2437.42],
+                        ['2013/2/6', 2432.68,2434.48,2427.7,2441.73],
+                        ['2013/2/7', 2430.69,2418.53,2394.22,2433.89],
+                        ['2013/2/8', 2416.62,2432.4,2414.4,2443.03],
+                        ['2013/2/18', 2441.91,2421.56,2415.43,2444.8],
+                        ['2013/2/19', 2420.26,2382.91,2373.53,2427.07],
+                        ['2013/2/20', 2383.49,2397.18,2370.61,2397.94],
+                        ['2013/2/21', 2378.82,2325.95,2309.17,2378.82],
+                        ['2013/2/22', 2322.94,2314.16,2308.76,2330.88],
+                        ['2013/2/25', 2320.62,2325.82,2315.01,2338.78],
+                        ['2013/2/26', 2313.74,2293.34,2289.89,2340.71],
+                        ['2013/2/27', 2297.77,2313.22,2292.03,2324.63],
+                        ['2013/2/28', 2322.32,2365.59,2308.92,2366.16],
+                        ['2013/3/1', 2364.54,2359.51,2330.86,2369.65],
+                        ['2013/3/4', 2332.08,2273.4,2259.25,2333.54],
+                        ['2013/3/5', 2274.81,2326.31,2270.1,2328.14],
+                        ['2013/3/6', 2333.61,2347.18,2321.6,2351.44],
+                        ['2013/3/7', 2340.44,2324.29,2304.27,2352.02],
+                        ['2013/3/8', 2326.42,2318.61,2314.59,2333.67],
+                        ['2013/3/11', 2314.68,2310.59,2296.58,2320.96],
+
+                    ]);
+
+                    function splitData(rawData) {
+                        var categoryData = [];
+                        var values = []
+                        for (var i = 0; i < rawData.length; i++) {
+                            categoryData.push(rawData[i].splice(0, 1)[0]);
+                            values.push(rawData[i])
+                        }
+                        return {
+                            categoryData: categoryData,
+                            values: values
+                        };
+                    }
+
+                    function calculateMA(dayCount) {
+                        var result = [];
+                        for (var i = 0, len = data0.values.length; i < len; i++) {
+                            if (i < dayCount) {
+                                result.push('-');
+                                continue;
+                            }
+                            var sum = 0;
+                            for (var j = 0; j < dayCount; j++) {
+                                sum += data0.values[i - j][1];
+                            }
+                            result.push(sum / dayCount);
+                        }
+                        return result;
+                    }
+
+
+                    option = {
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'cross'
+                            }
+                        },
+                        grid: {
+
+                            bottom: '15%'
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: data0.categoryData,
+                            axisLabel : {
+                                show:true,
+                                color:'#5D5C71'
+                            },
+                            axisLine:{
+                                lineStyle:{
+                                    color:'#1E1C2A'
+                                }
+                            }
+                        },
+                        yAxis: {
+                            scale: true,
+                            splitLine: {
+                                show: true,
+                                lineStyle: {
+                                    // 使用深浅的间隔色
+                                    opacity:0.1
+                                }
+                            },
+                            position:'right',
+                            axisLabel : {
+                                show:true,
+                                color:'#ffffff'
+                            },
+                            axisLine:{
+                                lineStyle:{
+                                    color:'#1E1C2A'
+                                }
+                            }
+                        },
+
+                        series: [
+                            {
+                                name: '日K',
+                                type: 'candlestick',
+                                data: data0.values,
+                                itemStyle: {
+                                    normal: {
+                                        color: upColor,
+                                        color0: downColor,
+                                        borderColor: upBorderColor,
+                                        borderColor0: downBorderColor
+                                    }
+                                },
+                            }
+                        ]
+                    };
+                    if (option && typeof option === "object") {
+                        myChart.setOption(option, true);
+                    }
+                },
+                line1:function (id) {
+
+                    var dom = document.getElementById("line1");
+                    var myChart = echarts.init(dom);
+                    option = null;
+                    var data0 = splitData([
+                        ['2013/1/24', 2320.26,2320.26,2287.3,2362.94],
+                        ['2013/1/25', 2300,2291.3,2288.26,2308.38],
+                        ['2013/1/28', 2295.35,2346.5,2295.35,2346.92],
+                        ['2013/1/29', 2347.22,2358.98,2337.35,2363.8],
+                        ['2013/1/30', 2360.75,2382.48,2347.89,2383.76],
+                        ['2013/1/31', 2383.43,2385.42,2371.23,2391.82],
+                        ['2013/2/1', 2377.41,2419.02,2369.57,2421.15],
+                        ['2013/2/4', 2425.92,2428.15,2417.58,2440.38],
+                        ['2013/2/5', 2411,2433.13,2403.3,2437.42],
+                        ['2013/2/6', 2432.68,2434.48,2427.7,2441.73],
+                        ['2013/2/7', 2430.69,2418.53,2394.22,2433.89],
+                        ['2013/2/8', 2416.62,2432.4,2414.4,2443.03],
+                        ['2013/2/18', 2441.91,2421.56,2415.43,2444.8],
+                        ['2013/2/19', 2420.26,2382.91,2373.53,2427.07],
+                        ['2013/2/20', 2383.49,2397.18,2370.61,2397.94],
+                        ['2013/2/21', 2378.82,2325.95,2309.17,2378.82],
+                        ['2013/2/22', 2322.94,2314.16,2308.76,2330.88],
+                        ['2013/2/25', 2320.62,2325.82,2315.01,2338.78],
+                        ['2013/2/26', 2313.74,2293.34,2289.89,2340.71],
+                        ['2013/2/27', 2297.77,2313.22,2292.03,2324.63],
+                        ['2013/2/28', 2322.32,2365.59,2308.92,2366.16],
+                        ['2013/3/1', 2364.54,2359.51,2330.86,2369.65],
+                        ['2013/3/4', 2332.08,2273.4,2259.25,2333.54],
+                        ['2013/3/5', 2274.81,2326.31,2270.1,2328.14],
+                        ['2013/3/6', 2333.61,2347.18,2321.6,2351.44],
+                        ['2013/3/7', 2340.44,2324.29,2304.27,2352.02],
+                        ['2013/3/8', 2326.42,2318.61,2314.59,2333.67],
+                        ['2013/3/11', 2314.68,2310.59,2296.58,2320.96],
+
+                    ]);
+                    function splitData(rawData) {
+                        var categoryData = [];
+                        var values = []
+                        for (var i = 0; i < rawData.length; i++) {
+                            categoryData.push(rawData[i].splice(0, 1)[0]);
+                            values.push(rawData[i])
+                        }
+                        return {
+                            categoryData: categoryData,
+                            values: values
+                        };
+                    }
+
+                    function calculateMA(dayCount) {
+                        var result = [];
+                        for (var i = 0, len = data0.values.length; i < len; i++) {
+                            if (i < dayCount) {
+                                result.push('-');
+                                continue;
+                            }
+                            var sum = 0;
+                            for (var j = 0; j < dayCount; j++) {
+                                sum += data0.values[i - j][1];
+                            }
+                            result.push(sum / dayCount);
+                        }
+                        return result;
+                    }
+                    var values = data0.values;
+                    var data = [];
+                    for(i in values){
+                        var number =Math.floor(Math.random()*100)*Math.floor(Math.random()*24);
+                        data.push(values[i][0]-number);
+                    }
+
+                    option = {
+                        xAxis: {
+                            splitLine: {
+                                show: true,
+                                lineStyle: {
+                                    opacity: 0.1
+                                }
+                            },
+                            type: 'category',
+                            boundaryGap: false,
+                            data: data0.categoryData,
+                        },
+                        yAxis: {
+                            show:false,
+                        },
+                        series: [
+                            {
+                                name:'',
+                                type:'bar',
+                                smooth:true,
+                                symbol: 'none',
+                                sampling: 'average',
+                                itemStyle: {
+                                    normal: {
+                                        color: '#1E1C2A'
+                                    }
+                                },
+                                data: data,
+                            }
+                        ]
+                    };
+
+                    if (option && typeof option === "object") {
+                        myChart.setOption(option, true);
+                    }
+
+
+                },
+            },
+        });
+
+        h.ready();
+    </script>
+</body>
+
+</html>

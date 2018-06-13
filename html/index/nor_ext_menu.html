@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui.2.0.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            background: rgb(4, 2, 14);
+            font-weight: 200;
+
+        }
+
+        #app {
+            width: 100%;
+            padding: 0 33px;
+            padding-top: 1.5rem
+        }
+
+        .top {
+            width: 100%;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .name {
+            color: #5D5C71;
+            text-transform: Uppercase;
+            letter-spacing: 2px;
+            font-size: 0.6rem;
+        }
+
+        .right {
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-transform: Uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+            font-size: 0.6rem;
+        }
+
+        .right input {
+            margin: 0 0.5rem;
+        }
+
+        .aui-switch {
+            width: 3rem;
+            height: 1.5rem;
+            border-radius: 5rem;
+            border-color: transparent;
+            background-color: #1E1C2A;
+        }
+
+        .aui-switch:before {
+            width: 1.3rem;
+            height: 1.3rem;
+            border-radius: 50%;
+            top: 0.05rem;
+        }
+
+        .c {
+            text-transform: Uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            font-size: 0.6rem;
+        }
+
+        .aui-list,.aui-list .aui-list-item {
+            background-image: none;
+        }
+
+        .aui-card-list,.aui-list {
+            background: transparent;
+        }
+
+        .aui-list-item-arrow:before {
+            border-color: #5D5C71;
+        }
+
+        .aui-media-list-item-inner {
+            border-bottom: 1px solid #1E1C2A;
+        }
+
+        .aui-list .aui-list-item-right {
+            text-transform: Uppercase;
+            letter-spacing: 2px;
+            font-size: 0.6rem;
+        }
+
+        .aui-list .aui-list-item-title {
+            color:#FFFFFF;
+            font-weight: 400;
+        }
+
+        .aui-list .aui-list-item-media {
+            padding: 1rem 0;
+            padding-right: 0.75rem;
+        }
+
+        .aui-list .aui-list-item {
+            padding-left: 1rem;
+        }
+        .aui-switch:checked:before {
+            left: 1.6rem;
+        }
+        .tops{
+            width: 100%;
+            text-align: center;
+            font-family: Exo2-Medium;
+            font-size: 12px;
+            color: #5D5C71;
+            margin-bottom: 20px;
+            margin-top: 16px;
+        }
+        .aui-list .aui-list-item{
+            padding-left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="tops">01/11/2018 09:40:00</div>
+        <div class="aui-card-list">
+            <div class="aui-card-list-content">
+                <ul class="aui-list aui-media-list">
+                    <li class="aui-list-item aui-list-item-middle">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-media" style="width: 2.2rem;">
+                                <img src="../../image/Currency/Ether@3x.png" >
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title" style="font-size: 14px;color: #FFFFFF;">Etherium</div>
+                                    <div class="aui-list-item-right" style="font-size: 14px;color: #5D5C71;">$ 1,530.04</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item aui-list-item-middle">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-media" style="width: 2.2rem;">
+                                <img src="../../image/Currency/Bitcoin@3x.png" >
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title" style="font-size: 14px;color: #FFFFFF;">Bitcoin</div>
+                                    <div class="aui-list-item-right" style="font-size: 14px;color: #5D5C71;">$ 18,374.34</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item aui-list-item-middle">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-media" style="width: 2.2rem;">
+                                <img src="../../image/Currency/Ether@3x.png" >
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title" style="font-size: 14px;color: #FFFFFF;">Etherium</div>
+                                    <div class="aui-list-item-right" style="font-size: 14px;color: #5D5C71;">$ 1,530.04</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item aui-list-item-middle">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-media" style="width: 2.2rem;">
+                                <img src="../../image/Currency/Bitcoin@3x.png" >
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title" style="font-size: 14px;color: #FFFFFF;">Bitcoin</div>
+                                    <div class="aui-list-item-right" style="font-size: 14px;color: #5D5C71;">$ 18,374.34</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item aui-list-item-middle">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-media" style="width: 2.2rem;">
+                                <img src="../../image/Currency/Ether@3x.png" >
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title" style="font-size: 14px;color: #FFFFFF;">Etherium</div>
+                                    <div class="aui-list-item-right" style="font-size: 14px;color: #5D5C71;">$ 1,530.04</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item aui-list-item-middle">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-media" style="width: 2.2rem;">
+                                <img src="../../image/Currency/Bitcoin@3x.png" >
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title" style="font-size: 14px;color: #FFFFFF;">Bitcoin</div>
+                                    <div class="aui-list-item-right" style="font-size: 14px;color: #5D5C71;">$ 18,374.34</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item aui-list-item-middle">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-media" style="width: 2.2rem;">
+                                <img src="../../image/Currency/Ether@3x.png" >
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title" style="font-size: 14px;color: #FFFFFF;">Etherium</div>
+                                    <div class="aui-list-item-right" style="font-size: 14px;color: #5D5C71;">$ 1,530.04</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item aui-list-item-middle">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-media" style="width: 2.2rem;">
+                                <img src="../../image/Currency/Bitcoin@3x.png" >
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title" style="font-size: 14px;color: #FFFFFF;">Bitcoin</div>
+                                    <div class="aui-list-item-right" style="font-size: 14px;color: #5D5C71;">$ 18,374.34</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../script/config.js"></script>
+    <script type="text/javascript" src="../../script/newapp.js"></script>
+    <script type="text/javascript" src="../../script/vue.js"></script>
+    <script type="text/javascript" src="../../script/echarts.common.min.js"></script>
+    <script>
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                number:'',
+                islogin:false
+            },
+            methods: {
+                init:function () {
+
+
+                },
+                openwin:function(type,val) {
+                    var that = this;
+                    switch (type) {
+                        case 'exc':
+                            h.openwin('nor_exc_win','/html/index',{});
+                            break;
+                    }
+                },
+            },
+        });
+
+        h.ready();
+    </script>
+</body>
+
+</html>

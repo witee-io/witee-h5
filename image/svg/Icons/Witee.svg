@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>svg/Icons/Witee</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M4,5 L22,5 C23.6568542,5 25,6.34314575 25,8 L25,19 C25,20.6568542 23.6568542,22 22,22 L4,22 C2.34314575,22 1,20.6568542 1,19 L1,8 C1,6.34314575 2.34314575,5 4,5 Z M4,7 C3.44771525,7 3,7.44771525 3,8 L3,19 C3,19.5522847 3.44771525,20 4,20 L22,20 C22.5522847,20 23,19.5522847 23,19 L23,8 C23,7.44771525 22.5522847,7 22,7 L4,7 Z M18.5,15 C17.6715729,15 17,14.3284271 17,13.5 C17,12.6715729 17.6715729,12 18.5,12 C19.3284271,12 20,12.6715729 20,13.5 C20,14.3284271 19.3284271,15 18.5,15 Z" id="path-1"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons/Witee">
+            <rect id="base" opacity="0" x="0" y="0" width="26" height="26"></rect>
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Shape" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <g id="Colors/Text" mask="url(#mask-2)" fill="#FFFFFF">
+                <rect id="Color" x="0" y="0" width="26" height="26"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

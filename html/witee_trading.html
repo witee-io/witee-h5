@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui.2.0.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            background: rgb(4, 2, 14);
+            font-weight: 200;
+        }
+
+        #app {
+            width: 100%;
+        }
+
+        .wrap {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .cells {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .cells span {
+            color: #ffffff;
+        }
+
+        .wrap {
+            margin-top: 0.5rem;
+        }
+
+        .aui-grid {
+            background: transparent;
+        }
+
+        .aui-grid .aui-grid-label {
+            color: #5D5C71;
+            font-weight: 400;
+            text-transform: Uppercase;
+        }
+
+        .aui-grid .aui-grid-label.active {
+            color: #ffffff;
+        }
+
+        .aui-grid .aui-grid-label.active::after {
+            position: absolute;
+            left: calc(50% - 3px);
+            bottom: -0.6rem;
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #34A9FF;
+        }
+
+        .aui-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .lists li {
+            padding: 0.75rem;
+        }
+
+        .lists li:nth-of-type(1) {
+            padding: 0 0.75rem;
+        }
+
+        .lis1 {
+            display: flex;
+            height: 2rem;
+            line-height: 2rem;
+        }
+
+        .lis {
+            display: flex;
+            height: 1.1rem;
+            line-height: 1.1rem;
+        }
+
+        .lis1 span,.lis span {
+            font-size: 0.6rem;
+            flex: 2;
+            color: white;
+        }
+
+        .lis span font {
+            font-size: 0.55rem;
+            color: #5D5C71;
+        }
+
+        .lis span:nth-of-type(1),.lis1 span:nth-of-type(1) {
+            flex: 1.6;
+        }
+        .lis span:nth-of-type(2),.lis1 span:nth-of-type(2) {
+            flex: 1.5;
+        }
+
+        .lis1.c,.lis.c,.c{
+            background: #14111D;
+        }
+
+        .aui-margin-l-5 {
+            margin-left: 0.4rem !important;
+        }
+
+
+        .title {
+            padding: 0 1rem;
+            color: #5D5C71;
+            letter-spacing: 2px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: Uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .dates {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background: black;
+            width: 50%;
+            height: 100%;
+        }
+
+        .change {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .change img {
+            width: 1.3rem;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .row span {
+            color: white;
+            letter-spacing: 2px;
+            font-size: 0.7rem;
+            font-weight: 400;
+            text-transform: Uppercase;
+        }
+
+        .row img {
+            width: 1.3rem;
+        }
+
+        .close {
+            width: 1.5rem;
+            position: relative;;
+            left: calc(100% - 2.5rem);
+            top: 0.5rem;
+        }
+
+        .time {
+            color: white;
+            margin: 0 0.5rem;
+            font-weight: 400;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <section class="aui-grid">
+            <div class="aui-row">
+                <div class="aui-col-xs-4">
+                    <div class="aui-grid-label active">buy</div>
+                </div>
+                <div class="aui-col-xs-4">
+                    <div class="aui-grid-label">sell</div>
+                </div>
+            </div>
+        </section>
+
+        <ul class="lists">
+            <li class="lis1 c">
+                <span style="color:#5D5C71">Symbol</span>
+                <span style="color:#5D5C71">Price</span>
+                <span style="color:#5D5C71">Coin&Tokens</span>
+            </li>
+            <li>
+                <div class="lis">
+                    <span>NEO/BTC</span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="lis">
+                    <span>01-10 12:34:56 </span>
+                    <span>0.013878932</span>
+                    <span>- 1.23456789 BTC</span>
+                </div>
+                <div class="lis">
+                    <span></span>
+                    <span></span>
+                    <span>+ 1234.23456789 NEO</span>
+                </div>
+            </li>
+            <li class="c">
+                <div class="lis">
+                    <span>NEO/BTC</span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="lis">
+                    <span>01-10 12:34:56 </span>
+                    <span>0.013878932</span>
+                    <span>- 1.23456789 BTC</span>
+                </div>
+                <div class="lis">
+                    <span></span>
+                    <span></span>
+                    <span>+ 1234.23456789 NEO</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

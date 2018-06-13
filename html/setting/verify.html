@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui.2.0.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/clubtheme.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            background: rgb(4, 2, 14);
+            font-weight: 200;
+        }
+
+        #app {
+            width: 100%;
+        }
+
+        .tips.err{
+            font-family: Exo2-Regular;
+            font-size: 14px;
+            color: #FF6960;
+            line-height: 24px;
+            text-align: center;
+            position: fixed;
+            bottom:20%;
+            width: 100%;
+        }
+        .tips.succ{
+            font-family: Exo2-Regular;
+            font-size: 14px;
+            color: #34A9FF;
+            line-height: 24px;
+            text-align: center;
+            position: fixed;
+            bottom:20%;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="tips succ" v-if="state == 2">Set up success</div>
+        <div class="tips err" v-if="state == 0">Please connect at least 4 points</div>
+        <div class="tips err" v-if="state == 1">Try Again</div>
+    </div>
+    <script type="text/javascript" src="../../script/config.js"></script>
+    <script type="text/javascript" src="../../script/newapp.js"></script>
+    <script type="text/javascript" src="../../script/vue.js"></script>
+    <script type="text/javascript">
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                state:-1,
+            },
+            methods: {
+                init:function () {
+                    var that = this;
+                    var matrixLock = api.require('matrixLock');
+                    if(h.pageParam().reset){
+                        matrixLock.clearGesture();
+                    }
+                    matrixLock.openSetView({
+                        y:-100,
+                        w:api.winWidth,
+                        tips:{
+                            size:0,
+                            color:'rgba(0,0,0,0)',
+                            sizeError:0,
+                            colorError:'rgba(0,0,0,0)',
+                        },
+                        matrix:{
+                            radius:40,
+                            activeBg:'#34A9FF',
+                            inactiveBg:'#34A9FF',
+                            normalLine:'#34A9FF',
+                            arrow:'#34A9FF'
+                        },
+                        fixedOn: 'verify',
+                        fixed:false
+                    },function(ret, err) {
+
+                        if (ret.status) {
+                            that.state = 2;
+                            h.sdata("ismatrixLock",{setting:true});
+                            api.execScript({
+                                name: 'pattern_win',
+                                frameName: 'pattern',
+                                script: 'vm.chk = true'
+                            });
+                            setTimeout(function(){
+                                h.closeWin();
+                            },1000)
+                        } else {
+                            that.state = err.code;
+
+                        }
+                    });
+                },
+            },
+        });
+
+        h.ready();
+    </script>
+</body>
+
+</html>

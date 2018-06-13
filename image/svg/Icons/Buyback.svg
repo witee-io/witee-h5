@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>svg/Icons/Buyback</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M6.41421356,18.1367751 L8.70710678,15.7811598 L7.29289322,14.3282604 L3.29289322,18.4376805 C2.90236893,18.8388876 2.90236893,19.4893728 3.29289322,19.8905799 L7.29289322,24 L8.70710678,22.5471006 L6.41421356,20.1914852 L16,20.1914852 C18.7614237,20.1914852 21,17.8916726 21,15.0547101 L19,15.0547101 C19,16.7568876 17.6568542,18.1367751 16,18.1367751 L6.41421356,18.1367751 Z M19.5857864,7.86322485 L17.2928932,10.2188402 L18.7071068,11.6717396 L22.7071068,7.56231953 C23.0976311,7.16111244 23.0976311,6.51062721 22.7071068,6.10942012 L18.7071068,2 L17.2928932,3.45289942 L19.5857864,5.8085148 L10,5.8085148 C7.23857625,5.8085148 5,8.10832737 5,10.9452899 L7,10.9452899 C7,9.2431124 8.34314575,7.86322485 10,7.86322485 L19.5857864,7.86322485 Z" id="path-1"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons/Buyback">
+            <rect id="base" opacity="0" x="0" y="0" width="26" height="26"></rect>
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Shape" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <g id="Colors/Text" mask="url(#mask-2)" fill="#FFFFFF">
+                <rect id="Color" x="0" y="0" width="26" height="26"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

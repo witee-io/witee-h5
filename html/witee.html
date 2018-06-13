@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui.2.0.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            font-weight: 200;
+            background: rgb(4, 2, 14);
+        }
+
+        #app {
+            width: 100%;
+        }
+
+        .topNav {
+            width: 100%;
+            overflow-x: scroll;
+
+        }
+        .topNavs{
+            overflow: hidden;
+            margin-top: 0px
+        }
+
+        .aui-tab {
+            display: block;
+            width: max-content;
+            background: transparent;
+        }
+
+        .aui-tab-item {
+            width: 5.5rem;
+            display: inline-block;
+            color: #5D5C71;
+            position: relative;
+            text-transform: Uppercase;
+            letter-spacing: 2px;
+        }
+        .topNavs .aui-tab-item{
+            width: auto;
+            padding-left: 25px;
+        }
+        .topNavs{
+            position: relative;
+            z-index: 99;
+        }
+
+        .aui-tab-item.aui-active {
+            color: white;
+            border: none;
+        }
+
+        .aui-tab-item.aui-active::after {
+            position: absolute;
+            left: calc(50% - 3px);
+            bottom: 0;
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #34A9FF;
+        }
+        .topNavs .aui-tab-item.aui-active::after{
+                left: calc(50% - -8px);
+        }
+
+        .aui-card-list,.aui-list,.aui-grid {
+            background: transparent;
+        }
+
+        .aui-list .aui-list-item {
+            background-image: none;
+        }
+
+        .aui-list .aui-list-item-title {
+            font-size: inherit;
+        }
+
+        .aui-list .aui-list-item-inner {
+            padding-right: 0;
+        }
+
+        .aui-list .aui-list-item {
+            padding-left: 0;
+        }
+
+        .aui-card-list {
+            margin-bottom: 0;
+            padding: 0 0.5rem;
+        }
+
+        .border1 {
+            position: absolute;
+            left: 61%;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            transform: rotate(30deg);
+            background: #34A9FF;
+
+        }
+
+        .aui-list-item-right {
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+        }
+
+        .aui-card-list-content img {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .aui-grid .aui-grid-label {
+            padding: 0.4rem 0.5rem;
+            background: #1E1C2A;
+            margin: 0 0.5rem;
+            font-size: 0.6rem;
+            color: #FFFFFF;
+            text-transform: Uppercase;
+            letter-spacing: 2px;
+        }
+        #container_line1{
+            position: relative;
+            left: 0;
+            width: 100%;
+            height:300px;
+            top:-2.5rem;
+            z-index: 2;
+            margin-bottom: -2.5rem;
+            background: rgb(4, 2, 14)!important;
+        }
+        .tstitle{
+            color: rgb(52, 169, 255)!important;
+            font-size: 1.5rem!important;
+            position: relative!important;
+            padding-left: 7px!important;
+        }
+        .tstitle span{
+            font-family: Exo2-Medium;
+            font-size: 12px;
+            color: #34A9FF;
+            position: absolute;
+            top: 9px;
+            left: 0;
+        }
+        .tabs {
+            border-top: 1px solid #1E1C2A;
+            margin-top: 1.5rem;
+
+        }
+        .tabs .aui-tab-item{
+            padding-top:12px;
+        }
+        .tabs .aui-tab-item.aui-active{
+            color: #34A9FF;
+        }
+
+        .tabs .aui-tab-item.aui-active::after {
+            position: absolute;
+            left: calc(50% - 15px);
+            top: 0;
+            content: '';
+            width: 30px;
+            height: 2px;
+            border-radius: 0;
+            background: #34A9FF;
+        }
+        .tips{
+            font-family: Exo2-Bold;
+            font-size: 12px;
+            color: #34A9FF;
+            letter-spacing: 2px;
+            padding:25px 30px 8px 30px;
+        }
+        .aui-media-list {
+            padding: 0 30px;
+        }
+        .aui-font-size-14{
+            font-family: Exo2-SemiBold;
+            font-size: 14px!important;
+            color: #FFFFFF!important;
+        }
+        .aui-list-item-text{
+            font-family: Exo2-Medium;
+            font-size: 13px!important;
+            color: #34A9FF!important;
+        }
+        .aui-media-list .aui-list-item-right img{
+            width: 32px;
+            height: 32px;
+            position: relative;
+            top: 10px;
+        }
+        .aui-media-list .aui-list-item-right span{
+            font-family: Exo2-Bold;
+            font-size: 12px;
+            color: #5D5C71;
+            letter-spacing: 2px;
+            position: relative;
+            top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="topNav">
+            <div class="aui-tab" style="margin: 0 auto;">
+                <div class="aui-tab-item tapmode" :class="tab=='Income'?'aui-active':''" @click="tab = 'Income'">Income</div>
+                <div class="aui-tab-item tapmode" :class="tab=='Ranking'?'aui-active':''" @click="tab = 'Ranking'">Ranking</div>
+            </div>
+        </div>
+        <div v-show="tab == 'Income'">
+            <div class="aui-card-list" style="margin-top:20px;">
+                <div class="border1"></div>
+                <div class="aui-card-list-content">
+                    <ul class="aui-list aui-media-list">
+                        <li class="aui-list-item aui-list-item-middle">
+                            <div class="aui-media-list-item-inner">
+                                <div class="aui-list-item-inner">
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title" style="color: #34A9FF;">Total Income</div>
+                                        <div class="aui-list-item-right" style="color: #00BD9A;">+2.35%</div>
+                                    </div>
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title tstitle">
+                                            <span>$</span>15,781.19
+                                        </div>
+                                        <div class="aui-list-item-right">
+                                            <span style="color: #00BD9A;">+$ 38,394.41</span>
+                                            <span style="margin-top: 0.2rem;">Change(24h)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-bottom:1px solid #1E1C2A;margin:42px 0px 24px 0px;"></div>
+            <div class="topNav topNavs" style="overflow-x: scroll;">
+                <div class="aui-tab" style="padding-right:25px;">
+                    <div class="aui-tab-item tapmode">10Min</div>
+                    <div class="aui-tab-item tapmode">1H</div>
+                    <div class="aui-tab-item tapmode aui-active">24H</div>
+                    <div class="aui-tab-item tapmode">1M</div>
+                    <div class="aui-tab-item tapmode">3M</div>
+                    <div class="aui-tab-item tapmode">1Y</div>
+                </div>
+            </div>
+            <div id="container_line1" ></div>
+            <section class="aui-grid" style="position: relative;top: -27px;">
+                <div class="aui-row">
+                    <div class="aui-col-xs-4">
+                        <div class="aui-grid-label" @click="openwin('exchangebalance')">exchange balance</div>
+                    </div>
+                    <div class="aui-col-xs-4">
+                        <div class="aui-grid-label" @click="openwin('Incomehistory')">Income history</div>
+                    </div>
+                    <div class="aui-col-xs-4">
+                        <div class="aui-grid-label" @click="openwin('tradingrecord')">trading record</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div v-show="tab == 'Ranking'">
+            <div style="width:100%;overflow-x: scroll;">
+                <div class="aui-tab tabs" >
+                    <div class="aui-tab-item aui-active">24H</div>
+                    <div class="aui-tab-item">New</div>
+                    <div class="aui-tab-item">ALL</div>
+                </div>
+            </div>
+            <p class="tips">Top 100 in 24H</p>
+            <ul class="aui-list aui-media-list">
+                <li class="aui-list-item aui-list-item-middle">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media" style="width: 3rem;">
+                            <img src="../image/demo1.png" class="aui-img-round aui-list-img-sm">
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title aui-font-size-14">Jessicaalba</div>
+                                <div class="aui-list-item-right">
+                                    <img src="../image/Img/1st@3x.png">
+                                </div>
+                            </div>
+                            <div class="aui-list-item-text">
+                                INCOME  $97,777.77
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item aui-list-item-middle">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media" style="width: 3rem;">
+                            <img src="../image/demo1.png" class="aui-img-round aui-list-img-sm">
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title aui-font-size-14">Jessicaalba</div>
+                                <div class="aui-list-item-right">
+                                    <img src="../image/Img/2nd@3x.png">
+                                </div>
+                            </div>
+                            <div class="aui-list-item-text">
+                                INCOME  $97,777.77
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item aui-list-item-middle">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media" style="width: 3rem;">
+                            <img src="../image/demo1.png" class="aui-img-round aui-list-img-sm">
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title aui-font-size-14">Jessicaalba</div>
+                                <div class="aui-list-item-right">
+                                    <img src="../image/Img/3rd@3x.png">
+                                </div>
+                            </div>
+                            <div class="aui-list-item-text">
+                                INCOME  $97,777.77
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item aui-list-item-middle">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media" style="width: 3rem;">
+                            <img src="../image/demo1.png" class="aui-img-round aui-list-img-sm">
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title aui-font-size-14">Jessicaalba</div>
+                                <div class="aui-list-item-right">
+                                    <span>No.4</span>
+                                </div>
+                            </div>
+                            <div class="aui-list-item-text">
+                                INCOME  $97,777.77
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" src="../script/config.js"></script>
+    <script type="text/javascript" src="../script/newapp.js"></script>
+    <script type="text/javascript" src="../script/vue.js"></script>
+    <script type="text/javascript" src="../script/echarts.common.min.js"></script>
+    <script>
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                number: '',
+                tab:'Income'
+            },
+            methods: {
+                init:function () {
+
+                    var that = this;
+                    //渲染页面
+                    that.line1();
+
+                },
+                line1:function () {
+                    var that = this;
+                    var dom = document.getElementById("container_line1");
+                        var myChart = echarts.init(dom);
+                    option = null;
+                    var time  = [123,41,55,66,89,99,2,4,12,35,123,55,123,41,55,66,89,99,2,4,12,35,123,55,123,41,55,66,89,99,2,4,12,35,123,55,123,41,55,66,89,99,2,4,12,35,123,55];
+                    var data = [1230,410,550,660,890,990,20,40,120,350,1230,550,1230,410,550,660,890,990,20,40,120,350,1230,550,1230,410,550,660,890,990,20,40,120,350,1230,550,1230,410,550,660,890,990,20,40,120,350,1230,550];
+
+                    option = {
+                        tooltip: {
+                            trigger: 'axis',
+                            position: function (pt,ret,re) {
+                                re.innerHTML = '<div style="position: relative;z-index:99;padding:0.2rem;font-size: 0.4rem;text-align: center;">'+ret[0].value+'<br/>18/01/02 19:48</div>';
+                                that.number = ret[0].value;
+                                return [pt[0]-20, '10%'];
+                            },
+                            backgroundColor:'#34A9FF'
+                        },
+                        backgroundColor:'rgb(00,00,00)',
+                        color:'#ffffff',
+                        grid:{
+                            left:40,
+                            right:20
+                        },
+                        xAxis: {
+                            splitLine: {
+                                show: true,
+                                lineStyle: {
+                                    // 使用深浅的间隔色
+                                    opacity: 0.1
+                                }
+                            },
+                            type: 'category',
+                            boundaryGap: false,
+                            data:time,
+                        },
+                        yAxis: {
+                            splitLine: {
+                                show: true,
+                                lineStyle: {
+                                    // 使用深浅的间隔色
+                                    opacity:0.1
+                                },
+
+                            },
+                            position:'left',
+                            type: 'value',
+                            nameTextStyle:{
+                                color:'#ffffff',
+                            },
+
+                        },
+                        textStyle:{
+                            color:'rgba(93,92,113,1)'
+                        },
+                        series: [
+                            {
+                                name:'模拟数据',
+                                type:'line',
+                                smooth:true,
+                                symbol: 'none',
+                                sampling: 'average',
+                                symbol: 'circle',
+                                showSymbol: false,
+                                symbolSize: 8,
+                                itemStyle: {
+                                    normal: {
+                                        borderWidth: 3,
+                                        borderColor: 'white',
+                                        color: 'rgb(106, 165, 238)'
+                                    }
+                                },
+                                areaStyle: {
+                                    normal: {
+                                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                            offset: 0,
+                                            color: 'rgba(52, 169, 255,0)'
+                                        }])
+                                    },
+
+                                },
+                                data: data
+                            },
+
+                        ]
+                    };
+
+                    if (option && typeof option === "object") {
+                        myChart.setOption(option, true);
+                    }
+                },
+                openwin:function(type,val) {
+                    var that = this;
+                    switch (type) {
+                        case 'exchangebalance':
+                            h.openwin('witee_exc_win','/html',{});
+                            break;
+                        case 'Incomehistory':
+                            h.openwin('witee_income_win','/html',{});
+                            break;
+                        case 'tradingrecord':
+                            h.openwin('witee_trading_win','/html',{});
+                            break;
+                    }
+                },
+            },
+        });
+
+        h.ready();
+    </script>
+</body>
+
+</html>

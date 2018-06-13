@@ -1,0 +1,39 @@
+html,
+body {
+	background: rgb(4, 2, 14);
+}
+/*头部*/
+.aui-bar-nav{
+	background:rgb(4, 2, 14);
+}
+.aui-bar-nav>a{
+	min-height:2.2rem;
+}
+.aui-bar-nav>a img{
+	width: 30px;
+	height: 30px;
+}
+.aui-bar-nav>a.aui-pull-right{
+	margin-right: 1rem;
+}
+.aui-bar-nav>a.aui-pull-left{
+	margin-left: 1rem;
+}
+.aui-title{
+	color: #ffffff;
+	min-height:2.2rem;
+	right: 3rem;
+	left:4rem;
+	letter-spacing: 2px;
+}
+/*工具栏*/
+.aui-bar-tab{
+	background:rgb(4, 2, 14);
+}
+.aui-bar-tab .aui-bar-tab-label{
+	color:#34A9FF;
+}
+
+
+
+[v-cloak]{display: none}

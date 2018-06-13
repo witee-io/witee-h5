@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>svg/Icons/Top/User</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M9.63180396,13.6953467 C8.62914582,12.7809317 8,11.4639383 8,10 C8,7.23857625 10.2385763,5 13,5 C15.7614237,5 18,7.23857625 18,10 C18,11.4639383 17.3708542,12.7809317 16.368196,13.6953467 C19.0982842,14.8846211 21,17.4759136 21,20.5 L19,20.5 C19,17.4796704 16.3295857,15 13,15 C9.67041426,15 7,17.4796704 7,20.5 L5,20.5 C5,17.4759136 6.90171583,14.8846211 9.63180396,13.6953467 Z M13,13 C14.6568542,13 16,11.6568542 16,10 C16,8.34314575 14.6568542,7 13,7 C11.3431458,7 10,8.34314575 10,10 C10,11.6568542 11.3431458,13 13,13 Z" id="path-1"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons/Top/User">
+            <rect id="base" opacity="0" x="0" y="0" width="26" height="26"></rect>
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Shape" fill="#06041D" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <g id="Colors/Text" mask="url(#mask-2)" fill="#FFFFFF">
+                <rect id="Color" x="0" y="0" width="26" height="26"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui.2.0.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            font-weight: 200;
+            background: rgb(4, 2, 14);
+        }
+
+        #app {
+            width: 100%;
+        }
+        .main{
+            padding: 0 0.5rem;
+        }
+        .topNav {
+            width: 100%;
+            overflow-x: scroll;
+        }
+
+        .aui-tab {
+            display: block;
+            width: max-content;
+            background: transparent;
+        }
+
+        .aui-tab-item {
+            width: 5.5rem;
+            display: inline-block;
+            color: #5D5C71;
+            position: relative;
+            text-transform: Uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            font-size: 0.6rem;
+        }
+
+        .aui-tab-item.aui-active {
+            color: white;
+            border: none;
+        }
+
+        .aui-tab-item.aui-active::after {
+            position: absolute;
+            left: calc(50% - 3px);
+            bottom: 0;
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #34A9FF;
+        }
+
+        .aui-card-list,.aui-list,.aui-grid {
+            background: transparent;
+        }
+
+        .aui-list .aui-list-item {
+            background-image: none;
+        }
+
+        .aui-list .aui-list-item-title {
+            font-size: inherit;
+        }
+
+        .aui-list .aui-list-item-inner {
+            padding-right: 0;
+        }
+
+        .aui-list .aui-list-item {
+            padding-left: 0;
+        }
+
+        .aui-card-list {
+            margin-bottom: 0;
+            padding: 0 0.5rem;
+        }
+
+        .border1 {
+            position: absolute;
+            left: 68%;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            transform: rotate(30deg);
+            background: #34A9FF;
+        }
+
+        .aui-list-item-right {
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+        }
+
+        .aui-card-list-content img {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .tab2.lists {
+            color: white;
+        }
+
+        .tab2 .lis {
+            display: flex;
+            height: 2rem;
+            line-height: 2rem;
+        }
+
+        .tab2 .lis.title span {
+            color: #5D5C71;
+        }
+
+        .tab2 .lis.active span {
+            color: #00BD9A;
+        }
+
+        .tab2 .lis span {
+            font-size: 0.6rem;
+            flex: 2;
+            color: white;
+        }
+
+        .tab2 .lis span font {
+            font-size: 0.55rem;
+            color: #5D5C71;
+        }
+
+        .tab2 .lis span:nth-of-type(1) {
+            flex: 0.7;
+        }
+
+        .tab2 .lis.c{
+            background: #14111D;
+        }
+
+        .tab1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding-top: 2rem;
+        }
+
+        .row1 {
+            color: #00BD9A;
+        }
+
+        .row2 {
+            color: #FF6960;
+            margin: 0.5rem 0;
+        }
+
+        .row3 {
+            color: #5D5C71;
+            display: flex;
+            align-items: center;
+            font-size: 0.6rem;
+            justify-content: center;
+        }
+
+        .row3 img {
+            width: 0.9rem;
+            margin-right: 0.3rem;
+        }
+
+        .tab3 .lis {
+            display: block;
+            height: 2rem;
+            line-height: 2rem;
+        }
+
+        .tab3 .lis span {
+            font-family: Exo2-Medium;
+            font-size: 13px;
+            color: #5D5C71;
+            word-wrap:break-word;
+            float: left;
+        }
+
+        .tab3 .lis span:nth-of-type(1) {
+            width: 30%;
+        }
+
+        .tab3 .lis span:nth-of-type(2) {
+            width: 47%;
+        }
+        .tab3 .lis span:nth-of-type(3) {
+            width: 23%;
+        }
+
+        .tab3 .lis.c{
+            background: #14111D;
+        }
+
+        .mid .tit {
+            text-align: center;
+            color: #ffffff;
+            margin-top: 1rem;
+            margin-bottom: 20px;
+            font-size: 0.75rem;
+        }
+
+        .mid .row {
+            display: flex;
+            width: 70%;
+            margin: 0 auto;
+            font-size: 0.7rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .mid .row span {
+            flex: 1;
+            text-align: left;
+            color: #5D5C71;
+        }
+
+        .mid .row span:nth-of-type(2) {
+            color: #FFFFFF;
+        }
+
+        .btns {
+            background: #34A9FF;
+            width: 45%;
+            padding: 0.7rem 0;
+            margin: 25px auto 45px auto;
+            text-align: center;
+            text-transform: Uppercase;
+            font-family: Exo2-SemiBold;
+            font-size: 12px;
+            color: #FFFFFF;
+            letter-spacing: 2px;
+            -webkit-clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 0);
+        }
+        .pd{
+            margin: 30px 0 30px 0;
+        }
+        .mid .row span:nth-child(1){
+            margin-right: 46px;
+        }
+        .row1{
+            margin-bottom: 10px;
+        }
+        .row2{
+            margin-bottom: 38px;
+        }
+        .tab2,.tab3{
+            margin-top: 30px;
+        }
+        .tab2 .lis{
+            padding: 0rem 1rem;
+            height: 3rem;
+            line-height: 3rem;
+        }
+        .tab3 .lis{
+            padding: 0.5rem 1rem;
+            height: auto;
+            overflow: hidden;
+        }
+        .ts{
+            color: #34A9FF!important;
+            font-size:1.5rem!important;
+            font-weight: 350!important;
+            position: relative!important;
+        }
+        .ts span{
+            font-family: Exo2-Medium!important;
+            font-size: 12px!important;
+            color: #34A9FF!important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.50)!important;
+        }
+        .boxtitle{
+            position: fixed;
+            top: 0;
+            right: 27px;
+            background: #1E1C2A;
+            border: 2px solid #34A9FF;
+            width: 212px;
+            height: 128px;
+            padding: 0 22px;
+        }
+        .boxtitle .text{
+            width: 100%;
+            height: 63px;
+            font-family: Exo2-Medium;
+            font-size: 12px;
+            color: #34A9FF;
+            line-height: 63px;
+        }
+        .boxtitle .text.border{
+            border-bottom: 1px solid #083150;
+        }
+        .paybox{
+            width: 100%;
+            height: auto;
+            padding: 10px;
+            margin-top: 1rem;
+        }
+        .paybox .title{
+            font-family: Exo2-Regular;
+            font-size: 14px;
+            color: #34A9FF;
+            line-height: 24px;
+        }
+        .paybox .info{
+            font-family: Exo2-Regular;
+            font-size: 14px;
+            color: #5D5C71;
+            line-height: 24px;
+            margin-top: 10px;
+            border-bottom:1px solid #1E1C2A;
+            padding-bottom: 20px;
+        }
+        .paybox .button{
+            display: flex;
+            margin-top: 2.5rem;
+            position: relative;
+        }
+        .paybox .button .left{
+            width: 50%;
+            font-family: Exo2-Medium;
+            font-size: 14px;
+            color: #FFFFFF;
+            line-height: 46px;
+        }
+        .paybox .button .right{
+            background: #34A9FF;
+            width: 109px;
+            padding: 0.7rem 0;
+            text-align: center;
+            text-transform: Uppercase;
+            font-family: Exo2-SemiBold;
+            font-size: 12px;
+            color: #FFFFFF;
+            letter-spacing: 2px;
+            -webkit-clip-path: polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 0);
+            float: right;
+            position: absolute;
+            right: 0;
+        }
+
+        .succesfully{
+            position: fixed;
+            width:315px;
+            height: 214px;
+            left: 50%;
+            top:50%;
+            margin-left: -157.5px;
+            margin-top: -107px;
+            background: #00BD9A;
+            -webkit-clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+            padding: 44px 0 0 0;
+        }
+        .succesfully img{
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px auto;
+        }
+        .succesfully .info{
+            font-family: Exo2-Medium;
+            font-size: 17px;
+            color: #FFFFFF;
+            margin-bottom: 36px;
+            width: 100%;
+            text-align: center;
+        }
+        .succesfully .ok{
+            font-family: Exo2-Regular;
+            font-size: 14px;
+            color: #FFFFFF;
+            line-height: 24px;
+            width: 100%;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="main">
+            <div class="aui-card-list pd">
+                <div class="border1"></div>
+                <div class="aui-card-list-content">
+                    <ul class="aui-list aui-media-list">
+                        <li class="aui-list-item aui-list-item-middle">
+                            <div class="aui-media-list-item-inner">
+                                <div class="aui-list-item-inner">
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title" style="color: #34A9FF;">18% of total</div>
+                                        <div class="aui-list-item-right" style="color: #FFFFFF;">135/500</div>
+                                    </div>
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title ts">166.81 <span>ETH</span></div>
+                                        <div class="aui-list-item-right">
+                                            <span style="margin-top: 0.2rem;">Remaining Blocks</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mid">
+                <div class="tit">WEE/ETH is at BUYBACK now :  724.54 / 1</div>
+                <div class="row">
+                    <span>My Participation</span>
+                    <span>2000.00 WEE</span>
+                </div>
+                <div class="row">
+                    <span>Volume Ranking</span>
+                    <span>3</span>
+                </div>
+                <div class="row">
+                    <span>Estimated Gains</span>
+                    <span>12.85ETH</span>
+                </div>
+            </div>
+
+            <div class="btns" @click="pay=true;" v-if="!pay">WEECYCLE now</div>
+
+            <div class="topNav" v-if="!pay">
+                <div class="aui-tab">
+                    <div class="aui-tab-item tapmode" :class="tab == 'WeeRuin'?'aui-active':''" @click="tab='WeeRuin'">Wee Ruin</div>
+                    <div class="aui-tab-item tapmode" :class="tab == 'Orderbook'?'aui-active':''" @click="tab='Orderbook'">Order book</div>
+                    <div class="aui-tab-item tapmode" :class="tab == 'history'?'aui-active':''" @click="tab='history'">history</div>
+                </div>
+            </div>
+            <div class="paybox" v-if="pay">
+                <div class="box">
+                    <div class="title">Amount</div>
+                    <div class="info">Amount in WEE,Up to 302344.83 WEE</div>
+                </div>
+                <div class="button">
+                    <div class="left" @click="pay=false;">Cancel</div>
+                    <div class="right" @click="succ=true;"@click="pay=false;">CYCLE</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab1" v-if="tab == 'WeeRuin' && !pay">
+            <div class="row1">29,485.92 ETH has been BUY-BACK</div>
+            <div class="row2">132,039,586.94 WEE has been ruined</div>
+            <div class="row3">
+                <img src="../image/Icons/Info@2x.png" alt="">
+                what’s BUYBACK?
+            </div>
+        </div>
+
+        <ul class="lists tab2" v-if="tab == 'Orderbook' && !pay">
+            <li class="lis c title">
+                <span>No.</span>
+                <span>Name</span>
+                <span>Participation</span>
+                <span>Time</span>
+            </li>
+            <li class="lis">
+                <span>1</span>
+                <span>MoriyaLuka</span>
+                <span>3900.00 WEE</span>
+                <span>01/12 08:04</span>
+            </li>
+            <li class="lis c">
+                <span>2</span>
+                <span>Jessicaalba</span>
+                <span>3000.00 WEE</span>
+                <span>01/12 08:04</span>
+            </li>
+            <li class="lis active">
+                <span>3</span>
+                <span>TBFans_x</span>
+                <span>2000.00 WEE</span>
+                <span>01/13 08:33</span>
+            </li>
+        </ul>
+
+        <div class="tab3" v-if="tab == 'history' && !pay">
+            <ul class="lists">
+                <li class="lis c">
+                    <span style="color:#5D5C71">ETH</span>
+                    <span style="color:#5D5C71">Gain Max</span>
+                    <span style="color:#5D5C71">Time</span>
+                </li>
+                <li class="lis">
+                    <span>204.56 ETH</span>
+                    <span>Jessicaalba(39.31 ETH)</span>
+                    <span>01/12 09:34</span>
+                </li>
+                <li class="lis c">
+                    <span>204.56 ETH</span>
+                    <span>Jessicaalba(39.31 ETH)</span>
+                    <span>01/12 09:34</span>
+                </li>
+                <li class="lis">
+                    <span>204.56 ETH</span>
+                    <span>Jessicaalba(39.31 ETH)</span>
+                    <span>01/12 09:34</span>
+                </li>
+            </ul>
+        </div>
+        <div class="boxtitle" v-if="boxtitle">
+            <div class="text border">Where did the ETH come from?</div>
+            <div class="text">What will happen to the WEE?</div>
+        </div>
+
+        <div class="succesfully" v-if="succ">
+            <img src="../image/Icons/Check@3x_w.png">
+            <div class="info">Submitted Succesfully</div>
+            <div class="ok" @click="succ = false;pay=false;">OK</div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../script/config.js"></script>
+    <script type="text/javascript" src="../script/newapp.js"></script>
+    <script type="text/javascript" src="../script/vue.js"></script>
+    <script type="text/javascript" src="../script/echarts.common.min.js"></script>
+    <script>
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                tab:'WeeRuin',
+                boxtitle:false,
+                pay:false,
+                succ:false
+            },
+            methods: {
+                init:function () {
+
+
+                },
+            },
+        });
+
+        h.ready();
+    </script>
+</body>
+
+</html>

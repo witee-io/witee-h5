@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui.2.0.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/clubtheme.css" />
+    <style>
+    html,
+    body {
+        position: relative;
+        height: 100%;
+        font-weight: 200;
+        background: rgb(4, 2, 14);
+
+    }
+
+    #app {
+        width: 100%;
+        padding: 0 30px;
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
+    .tie{
+        font-family: Exo2-SemiBold;
+        font-size: 14px;
+        color: #5D5C71;
+        margin-bottom: 10px
+    }
+    .box{
+        font-family: Exo2-Medium;
+        font-size: 13px;
+        color: #FFFFFF;
+        margin-bottom: 27px;
+        word-wrap:break-word;
+    }
+    .center{
+        margin-top: 5px;
+        text-align: center;
+    }
+    .center .text{
+        width: auto;
+        height: 32px;
+        font-family: Exo2-Medium;
+        font-size: 24px;
+        color: #FF6960;
+        display: inline-flex;
+        margin: 0 auto;
+    }
+    .center .text img{
+        width: 32px;
+        height: 32px;
+        margin-left: 4.5px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="tie">Sent</div>
+        <div class="box center">
+            <div class="text">
+                <span>-200 ETH</span>
+                <img src="../../image/Currency/Ether@3x.png">
+            </div>
+        </div>
+        <div class="tie">To</div>
+        <div class="box">
+            3xjfHVkTBtmvj15gBDnGEFQqljHJuQDDaO5Juer3
+        </div>
+        <div class="tie">Gas</div>
+        <div class="box">
+            0.00117972 ETH
+        </div>
+        <div class="tie">Time</div>
+        <div class="box">
+            01/03/2018
+        </div>
+        <div class="tie">Memo</div>
+        <div class="box">
+
+        </div>
+        <div class="tie">Transaction#</div>
+        <div class="box">
+            0x42b52f294fd03ef1d39b06693a17ad9506f0c2f0cc24b5fa387939f7c60a7017
+        </div>
+        <div class="tie">Block#</div>
+        <div class="box">
+            4920789
+        </div>
+    </div>
+    <script type="text/javascript" src="../../script/config.js"></script>
+    <script type="text/javascript" src="../../script/newapp.js"></script>
+    <script type="text/javascript" src="../../script/vue.js"></script>
+    <script type="text/javascript">
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                islogin:true,
+                tab:'WEE'
+            },
+            methods: {
+                init:function () {
+
+                },
+            },
+        });
+
+        h.ready();
+    </script>
+</body>
+
+</html>
